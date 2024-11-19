@@ -20,11 +20,5 @@
                 <li><a href="index.php?act=gopy"> Góp Ý </a></li>
                 <li><a href="index.php?act=hoidap"> Hỏi Đáp </a></li>
             </ul>
-
-            <div class="">
-        <form action="index.php?act=sanpham" method="post">
-            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
-            <input type="submit" name="timkiem" value="Tìm kiếm">
-        </form>
-    </div>
         </div>
+    </div>
