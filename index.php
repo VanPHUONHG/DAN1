@@ -1,11 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php
+session_start();
+include "model/pdo.php";
+include "model/danhmuc.php";
+include "model/sanpham.php";
+include "model/taikhoan.php";
+include "model/cart.php";
+include "view/header.php";
+include "global.php";
+
+include "view/footer.php";
+?>
