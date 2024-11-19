@@ -20,5 +20,7 @@
                 <li><a href="index.php?act=gopy"> Góp Ý </a></li>
                 <li><a href="index.php?act=hoidap"> Hỏi Đáp </a></li>
             </ul>
-        </div>
+
+            <div>
     </div>
+        </div>
