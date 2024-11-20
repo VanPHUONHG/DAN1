@@ -7,17 +7,17 @@
                             <!-- Full-width images with number and caption text -->
                             <div class="mySlides fade">
                                 <div class="numbertext">1 / 3</div>
-                                <img src="view/img/car.jpg" style="width:100%">
+                                <img src="./view/img/car.jpg" style="width:100%">
                                 <div class="text">Rolls Royce</div>
                             </div>
                             <div class="mySlides fade">
                                 <div class="numbertext">2 / 3</div>
-                                <img src="view/img/car1.jpg" style="width:100%">
+                                <img src="./view/img/banner1.jpg" style="width:100%">
                                 <div class="text">Maych bach s450</div>
                             </div>
                             <div class="mySlides fade">
                                 <div class="numbertext">3 / 3</div>
-                                <img src="view/img/car2.jpg" style="width:100%">
+                                <img src="./view/img/banner2.jpg" style="width:100%">
                                 <div class="text">Lamborghini Aventador</div>
                             </div>
                             <!-- Next and previous buttons -->
