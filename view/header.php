@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DỰ ÁN MẪU</title>
+    <title>DỰ ÁN 1</title>
     <link rel="stylesheet" href="view/css/style.css">
 </head>
 <body>
     <div class="boxcenter">
         <div class="row mb header">
-            <h1>GARA Ô TÔ</h1>
+            <h1>TrailForge</h1>
         </div>
         
         <div class="row mb menu">
@@ -21,10 +21,6 @@
                 <li><a href="index.php?act=hoidap"> Hỏi Đáp </a></li>
             </ul>
 
-            <div class="">
-        <form action="index.php?act=sanpham" method="post">
-            <input type="text" name="kyw" placeholder="Từ khóa tìm kiếm">
-            <input type="submit" name="timkiem" value="Tìm kiếm">
-        </form>
+            <div>
     </div>
         </div>
