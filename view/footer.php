@@ -2,12 +2,12 @@
 <footer>
     <div class="footer-middle">
       <div class="footer-column">
-        <h4>Customer Service</h4>
+        <h4>Thông tin liên lạc</h4>
         <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Order Tracking</a></li>
-          <li><a href="#">Returns & Refunds</a></li>
-          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Email</a></li>
+          <li><a href="#">Địa chỉ</a></li>
+          <li><a href="#">0354549423</a></li>
+          <li><a href="#">8:00-17:00</a></li>
         </ul>
       </div>
 
