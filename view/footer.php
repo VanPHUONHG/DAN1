@@ -1,5 +1,50 @@
-<div class="row mb footer">
-            Copyright © 2020
+<div class="row mb">
+<footer>
+    <div class="footer-middle">
+      <div class="footer-column">
+        <h4>Thông tin liên lạc</h4>
+        <ul>
+          <li><a href="#">Email</a></li>
+          <li><a href="#">Địa chỉ</a></li>
+          <li><a href="#">0354549423</a></li>
+          <li><a href="#">8:00-17:00</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Men's Shoes</a></li>
+          <li><a href="#">Women's Shoes</a></li>
+          <li><a href="#">Kids' Shoes</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; Dự án 1</p>
+    </div>
+  </footer>
         </div>
     </div>
 <!-- JS CHO Slideshow -->
