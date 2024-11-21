@@ -61,15 +61,72 @@
     width: 74%;
 }
 
-.footer {
+/* Footer Styles */
+footer {
+    font-size: 14px;
+    color: #fff;
     background-color: #4CAF50;
-    text-align: center;
-    border: 1px #ccc solid;
-    font-size: 1.2vw;
-    color: #000;
-    border-radius: 5px;
-    padding: 20px;
+    padding: 20px 5px;
+    line-height: 1.5;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.footer-middle {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1  0px;
+}
+
+.footer-column {
+    flex: 1 1 20%;
+    margin: 0 10px;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #d4f1f4;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid gray ;
+    text-align: center; /* Canh giữa nội dung */
+    margin-top: 20px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    margin: 0;
+}
+
 
 .boxtitle {
     color: #000;
