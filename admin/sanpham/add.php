@@ -34,7 +34,7 @@
 
             <div class="row mb10">
                 Mô tả: <br>
-                <textarea name="mota" cols="155" rows="8"></textarea>
+                <textarea name="mota" cols="101" rows="8"></textarea>
             </div>
 
             <div class="row mb10">

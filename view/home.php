@@ -6,19 +6,34 @@
                         <div class="slideshow-container">
                             <!-- Full-width images with number and caption text -->
                             <div class="mySlides fade">
-                                <div class="numbertext">1 / 3</div>
-                                <img src="./view/img/car.jpg" style="width:100%">
-                                <div class="text">Rolls Royce</div>
+                                <div class="numbertext">1 / 6</div>
+                                <img src="view/img/banner3.jpg" style="width:100%">
+                                <div class="text"></div>
                             </div>
                             <div class="mySlides fade">
-                                <div class="numbertext">2 / 3</div>
-                                <img src="./view/img/banner1.jpg" style="width:100%">
-                                <div class="text">Maych bach s450</div>
+                                <div class="numbertext">2 / 6</div>
+                                <img src="view/img/banner6.jpg" style="width:100%">
+                                <div class="text"></div>
                             </div>
                             <div class="mySlides fade">
-                                <div class="numbertext">3 / 3</div>
+                                <div class="numbertext">3 / 6</div>
                                 <img src="./view/img/banner2.jpg" style="width:100%">
-                                <div class="text">Lamborghini Aventador</div>
+                                <div class="text"></div>
+                            </div>
+                            <div class="mySlides fade">
+                                <div class="numbertext">4 / 6</div>
+                                <img src="view/img/banner4.jpg" style="width:100%">
+                                <div class="text"></div>
+                            </div>
+                            <div class="mySlides fade">
+                                <div class="numbertext">5 / 6</div>
+                                <img src="view/img/baner5.jpg" style="width:100%">
+                                <div class="text"></div>
+                            </div>
+                            <div class="mySlides fade">
+                                <div class="numbertext">6 / 6</div>
+                                <img src="view/img/banner7.webp" style="width:100%">
+                                <div class="text"></div>
                             </div>
                             <!-- Next and previous buttons -->
                             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -30,6 +45,9 @@
                             <span class="dot" onclick="currentSlide(1)"></span>
                             <span class="dot" onclick="currentSlide(2)"></span>
                             <span class="dot" onclick="currentSlide(3)"></span>
+                            <span class="dot" onclick="currentSlide(4)"></span>
+                            <span class="dot" onclick="currentSlide(5)"></span>
+                            <span class="dot" onclick="currentSlide(6)"></span>
                         </div>
                     </div>
                 </div>
