@@ -3,7 +3,7 @@
  * Kết nối đến cơ sở dữ liệu sử dụng PDO
  */
 function pdo_get_connection() {
-    $dburl = "mysql:host=localhost;dbname=demo;charset=utf8";
+    $dburl = "mysql:host=localhost;dbname=duan1;charset=utf8";
     $username = 'root';
     $password = '';
     try {
