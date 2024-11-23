@@ -1,9 +1,13 @@
 <?php
+session_start();
 include "../model/pdo.php";
 include "../model/danhmuc.php";
 include "../model/sanpham.php";
 include "../model/taikhoan.php";
+include "../model/binhluan.php";
+include "../model/cart.php";
 include "header.php";
+
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -17,11 +21,13 @@ if (isset($_GET['act'])) {
             }
             include "danhmuc/add.php";
             break;
+
             // Danh sách danh mục
         case 'listdm':
             $listdm = loadAll_danhmuc();
             include "danhmuc/list.php";
             break;
+
             // Xóa danh mục
         case 'xoaDanhMuc':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -31,6 +37,7 @@ if (isset($_GET['act'])) {
             $listdm = loadAll_danhmuc();
             include "danhmuc/list.php";
             break;
+
             // Sửa danh mục
         case 'suaDanhMuc':
             if (isset($_GET['id']) && is_numeric($_GET['id']) && ($_GET['id'] > 0)) {
@@ -38,6 +45,7 @@ if (isset($_GET['act'])) {
             }
             include "danhmuc/update.php";
             break;
+
             // Cập nhật danh mục
         case 'updatedm':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
@@ -49,6 +57,7 @@ if (isset($_GET['act'])) {
             $listdm = loadAll_danhmuc();
             include "danhmuc/list.php";
             break;
+
             // SẢN PHẨM
         case 'addsp':
             // kiểm tra xem người dùng có clich vào nút add ko
@@ -65,6 +74,7 @@ if (isset($_GET['act'])) {
                 } else {
                     // echo "Sorry, there was an error uploading your file.";
                 }
+
                 insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
                 $thongbao = "THÊM THÀNH CÔNG";
                 // header('Location: index.php?act=listdm');
@@ -73,6 +83,7 @@ if (isset($_GET['act'])) {
             // var_dump($listdanhmuc);die();
             include 'sanpham/add.php';
             break;
+
             // Danh sách sản phẩm
         case 'listsp':
             if (isset($_POST['listok']) && ($_POST['listok'])) {
@@ -86,6 +97,7 @@ if (isset($_GET['act'])) {
             $listsanpham = loadall_sanpham($kyw, $iddm);
             include 'sanpham/list.php';
             break;
+
             // Xóa sản phẩm
         case 'xoasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -94,6 +106,7 @@ if (isset($_GET['act'])) {
             $listsanpham = loadall_sanpham();
             include 'sanpham/list.php';
             break;
+
             // Sửa sản phẩm
         case 'suasp':
             if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -126,13 +139,63 @@ if (isset($_GET['act'])) {
             $listsanpham = loadall_sanpham();
             include 'sanpham/list.php';
             break;
-                        
+            
+            // Danh sách khách hàng
+        case 'dskh':
+                $listtaikhoan = loadAll_taikhoan('',0);
+                include "taikhoan/list.php";
+            break;
+            
+            // Danh sách bình luận
+        case 'dsbl':
+            $listbinhluan = loadAll_binhluan(0);
+            include "binhluan/list.php";
+            break;
+            
+            // Xóa bình luận
+        case 'xoabl':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                delete_binhluan($id);
+            } 
+            $listbinhluan = loadAll_binhluan(0);
+            include "binhluan/list.php";
+            break;
+
+            // Danh sách bill
+        case 'dsbill':
+            $listbill= loadall_bill("",0);
+            include "bill/list.php";
+            break;
+        
+        case 'listbill':
+            if (isset($_POST['kyw']) && ($_POST['kyw']!="")) {
+                $kyw= $_POST['kyw'];              
+            } else {
+                $kyw="";
+            }
+            $listbill= loadall_bill($kyw, 0);
+            include "bill/list.php";
+            break;
+
+            // Thống kê
+        case 'thongke':
+            $listthongke= loadall_thongke();
+            include "thongke/list.php";
+            break;
+
+            // Biểu đồ
+        case 'bieudo':
+            $listthongke= loadall_thongke();
+            include "thongke/bieudo.php";
+            break;
+
         default:
-            include "home.php";
+            include "dangnhap.php";
             break;   
     }
 } else {
-    include "home.php";
+    include "dangnhap.php";
 }
 include "footer.php";
 ?>
