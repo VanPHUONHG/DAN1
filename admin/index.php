@@ -7,6 +7,8 @@ include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/cart.php";
 include "header.php";
+include "../model/phanquyen.php";
+checkAdmin();
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];

@@ -8,7 +8,7 @@
             <div class="row boxcontent">
                 <?php
                     $imgSrc = htmlspecialchars($img_path . $img);
-                    echo "<div class='row mb spct'><img src='$imgSrc' alt='" . htmlspecialchars($name) . "'><br></div>";
+                    echo "<div class='row mb spct'><img src='$imgSrc' alt='" . htmlspecialchars($name) . "' style=\"width: 50%;\"><br></div>";
                     echo htmlspecialchars($mota);
                 ?>
             </div>
