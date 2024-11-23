@@ -4,6 +4,7 @@ include "model/pdo.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
 include "model/taikhoan.php";
+include "model/cart.php";
 include "view/header.php";
 include "global.php";
 
@@ -111,7 +112,95 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
             session_unset();
             header('Location: index.php');
             break;
+        
+        case 'viewcart':
+            include "view/cart/viewcart.php";
+            break;
 
+            // Thêm sản phẩm
+        case 'addtocart':
+            if (isset($_POST['addtocart']) && $_POST['addtocart']) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $img = $_POST['img'];
+                $price = $_POST['price'];
+                $soluong = 1;
+                $ttien = $soluong * $price;
+                $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                    
+                // Thêm sản phẩm vào giỏ hàng
+                $_SESSION['mycart'][] = $spadd;
+            }
+            include "view/cart/viewcart.php";
+            break;
+
+            // Xóa sản phẩm khỏi giỏ hàng
+        case 'delcart':
+            if (isset($_GET['idcart'])) {
+                array_splice($_SESSION['mycart'], $_GET['idcart'], 1);
+            } else {
+                $_SESSION['mycart'] = [];
+            }
+            header('Location:' . $_SERVER['HTTP_REFERER']);
+            break;
+            
+            case 'bill':
+                include "view/cart/bill.php";
+                break;
+
+            // Tạo bill
+            case 'billconform':
+                if (isset($_POST['dongydathang']) && $_POST['dongydathang']) {
+                    // Kiểm tra nếu người dùng đã đăng nhập
+                    if (isset($_SESSION['user'])) {
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $iduser = 0;  // Nếu người dùng chưa đăng nhập
+                    }
+            
+                    // Lấy thông tin người dùng từ form
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    $address = $_POST['address'];
+                    $tel = $_POST['tel'];
+            
+                    $pttt = isset($_POST['pttt']) ? $_POST['pttt'] : 0; // Mặc định là "Trả tiền khi nhận hàng"
+
+                    // Lấy ngày giờ đặt hàng
+                    $ngaydathang = date("h:i:sa d/m/Y");
+            
+                    // Tính tổng giá trị đơn hàng
+                    $tongdonhang = tongdonhang();  // Hàm tính tổng tiền đơn hàng
+            
+                    // Gọi hàm insert_bill để lưu thông tin đơn hàng
+                    $idbill = insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang, $tongdonhang);
+            
+                    // Insert thông tin các sản phẩm trong giỏ hàng vào bảng cart
+                    foreach ($_SESSION['mycart'] as $cart) {
+                        insert_cart($_SESSION['user']['id'], $cart[0], $cart[2], $cart[1], $cart[3], $cart[4], $cart[5], $idbill);
+                    }
+            
+                    // Reset giỏ hàng sau khi đặt đơn hàng thành công
+                    $_SESSION['mycart'] = [];  // Xóa giỏ hàng
+            
+                    // Hiển thị thông tin đơn hàng vừa tạo
+                    $bill = loadone_bill($idbill);
+                    $billct = loadall_cart($idbill);
+            
+                    // Hiển thị trang xác nhận đơn hàng
+                    include "view/cart/billconform.php";
+                }
+                break;
+        
+            // Đơn hàng của tôi
+        case 'mybill':
+                $listbill= loadall_bill("",$_SESSION['user']['id']);
+                include "view/cart/mybill.php";
+                break;
+
+        case 'boxsp':
+                include "view/sanphamct.php";
+                break;   
 
         default:
             include "view/home.php";
