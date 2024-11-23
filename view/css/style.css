@@ -27,12 +27,12 @@
 }
 
 .demo {
-    background-color: antiquewhite;
+    background-color: darkslategrey;
     min-height: 100px;
 }
 
 .header {
-    background-color:#4CAF50;
+    background-color:darkslategrey;
     border: none;
     color: #000;
     border-radius: 5px;
@@ -48,7 +48,8 @@
     background-color: black;
     border: none;
     color: #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
+    text-align: center;
 }
 
 .boxphai {
@@ -65,7 +66,7 @@
 footer {
     font-size: 14px;
     color: #fff;
-    background-color: #4CAF50;
+    background-color: darkslategrey;
     padding: 20px 5px;
     line-height: 1.5;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
@@ -82,6 +83,7 @@ footer {
     flex: 1 1 20%;
     margin: 0 10px;
     min-width: 200px;
+    padding-left: 25px;
 }
 
 .footer-column h4 {
@@ -104,18 +106,19 @@ footer {
 }
 
 .footer-column ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    font-size: 1.2rem; /* Tăng kích thước chữ */
+    color: white; /* Màu xanh lá cây */
+    text-decoration: none; /* Xóa gạch chân */
+    transition: color 0.3s; /* Hiệu ứng mượt khi đổi màu */
 }
 
 .footer-column ul li a:hover {
-    color: #d4f1f4;
+    color: yellow;
     text-decoration: underline;
 }
 
 .footer-bottom {
-    border-top: 1px solid gray ;
+    border-top: 1px solid darkslategrey ;
     text-align: center; /* Canh giữa nội dung */
     margin-top: 20px;
     padding: 10px 0;
@@ -128,10 +131,39 @@ footer {
 }
 
 
+.social-icons ul {
+    display: grid; /* Sử dụng grid để chia cột */
+    grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
+    gap: 10px; /* Khoảng cách giữa các mục */
+    padding: 0;
+    list-style: none; /* Loại bỏ dấu chấm của danh sách */
+    margin: 0;
+}
+
+.social-icons ul li {
+    margin: 0;
+}
+
+.social-icons ul li a {
+    text-decoration: none; /* Xóa gạch chân */
+    color: white; /* Màu xanh lá cây cho liên kết */
+    font-size: 1.3rem;
+    transition: color 0.3s;
+    display: inline-block;
+    text-align: left; /* Căn trái trong từng cột */
+}
+
+.social-icons ul li a:hover {
+    color: yellow; /* Màu đậm hơn khi hover */
+}
+
 .boxtitle {
     color: #000;
+    font-size: 15px;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: darkslategrey;
+    color: white;
+    text-align: center;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     border: 1px #ccc solid;
@@ -250,7 +282,7 @@ footer {
 }
 
 .menu ul li a:hover {
-    color: #FFFF00;
+    color: #05f305;
     font-size: 0.8vw;
 }
 
@@ -386,10 +418,10 @@ footer {
 }
 
 .formtitle {
-    border: 1px #ccc solid;
-    color: #666;
+    border: 1px black solid;
+    color: white;
     border-radius: 5px;
-    background-color: #eee;
+    background-color: darkslategray;
     padding: 0px 20px;
 }
 
@@ -615,6 +647,8 @@ footer {
 .pttt input[type='radio'] {
     margin-right: 10px;
 }
+
+
 
 /* BÌNH LUẬN */
 
