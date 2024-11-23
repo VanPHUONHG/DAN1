@@ -37,7 +37,7 @@
             <?php } ?>
         <?php } else { ?>
             <tr>
-                <td colspan="5">No orders found.</td>
+                <td colspan="7">No orders found.</td>
             </tr>
         <?php } ?>
     
