@@ -93,7 +93,7 @@
   }
 
   // Auto change slides every 2 seconds
-  setInterval(() => plusSlides(1), 2000);
+  setInterval(() => plusSlides(1), 2500);
 </script>
 </body>
 

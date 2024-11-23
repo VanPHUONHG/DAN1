@@ -12,7 +12,8 @@
 
             <div class="row mb10">
                 <ul>
-                    <li><a href="index.php?act=mybill">Đơn hàng của tôi</a></li>
+                    <li><a href="index.php?act=viewcart">Giỏ hàng của tôi</a></li>
+                    <li><a href="index.php?act=mybill">Lịch sử mua hàng</a></li>
                     <li><a href="index.php?act=edit_taikhoan">Cập nhật thông tin</a></li>
                     <?php if ($role == 1) { ?>
                         <li><a href="admin/index.php">Đăng nhập admin</a></li>
