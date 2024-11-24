@@ -42,6 +42,7 @@
 .header h1 {
     margin: 20px;
     font-size: 1.4vw;
+    color: white;
 }
 
 .menu {
@@ -175,9 +176,9 @@ footer {
     border-left: 1px #ccc solid;
     border-right: 1px #ccc solid;
     border-bottom: 1px #ccc solid;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-    min-height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 150px;
     padding: 20px;
 }
 
