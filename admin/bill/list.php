@@ -17,6 +17,7 @@
                 <th>GIÁ TRỊ ĐƠN HÀNG</th>
                 <th>TÌNH TRẠNG ĐƠN HÀNG</th>
                 <th>NGÀY ĐẶT HÀNG</th>
+                <th>CẬP NHẬT TRẠNG THÁI</th>
             </tr>
              
             <?php
@@ -25,7 +26,7 @@
                 $kh = $bill["bill_name"] . '<br>' . $bill["bill_email"] . '<br>' . $bill["bill_address"] . '<br>' . $bill["bill_tel"];
                 $ttdh = get_ttdh($bill["bill_status"]);
                 $count = loadall_cart_count($bill["id"]);
-
+            
                 echo '<tr>
                         <td></td>
                         <td>DAM-' . $bill['id'] . '</td>
@@ -34,8 +35,20 @@
                         <td><strong>' . $bill['total'] . '</strong>$</td>
                         <td>' . $ttdh . '</td>
                         <td>' . $bill['ngaydathang'] . '</td>
+                        <td>
+                            <form action="index.php?act=updateBillStatus" method="post">
+                                <input type="hidden" name="bill_id" value="' . $bill['id'] . '">
+                                <select name="new_status">
+                                    <option value="0"' . ($bill["bill_status"] == 0 ? "selected" : "") . '>Đang xử lý</option>
+                                    <option value="1"' . ($bill["bill_status"] == 1 ? "selected" : "") . '>Chờ xác nhận</option>
+                                    <option value="2"' . ($bill["bill_status"] == 2 ? "selected" : "") . '>Đang giao</option>
+                                    <option value="3"' . ($bill["bill_status"] == 3 ? "selected" : "") . '>Đã giao</option>
+                                </select>
+                                <input type="submit" value="Cập nhật">
+                            </form>
+                        </td>
                     </tr>';
-            }
+            }            
             ?>
         </table>
     </div>
