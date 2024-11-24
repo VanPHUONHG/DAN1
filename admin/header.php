@@ -22,3 +22,7 @@
                 <li><a href="index.php?act=dsbill"> Danh Sách Sản Phẩm  </a></li>
             </ul>
         </div>
+
+        <div class="row mb15">
+            <button onclick="window.location.href='../index.php';">Quay lại trang khách hàng</button>
+        </div>
