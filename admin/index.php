@@ -6,8 +6,10 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/cart.php";
+include "../model/bill.php";
 include "header.php";
 include "../model/phanquyen.php";
+include "../global.php";
 checkAdmin();
 
 if (isset($_GET['act'])) {
@@ -179,6 +181,17 @@ if (isset($_GET['act'])) {
             $listbill= loadall_bill($kyw, 0);
             include "bill/list.php";
             break;
+
+        case 'updateBillStatus':
+            if (isset($_POST['bill_id']) && isset($_POST['new_status'])) {
+                $bill_id = $_POST['bill_id'];
+                $new_status = $_POST['new_status'];
+                update_bill_status($bill_id, $new_status);
+                $thongbao = "Cập nhật trạng thái đơn hàng thành công!";
+            }
+            $listbill = loadall_bill("", 0);
+            include "bill/list.php";
+            break;  
 
             // Thống kê
         case 'thongke':
