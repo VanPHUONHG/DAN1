@@ -1,18 +1,18 @@
 <div class="row formtitle">
-                <h1>DANH SÁCH TÀI KHOẢN</h1>
+                <h1>DANH SÁCH KHÁCH HÀNG</h1>
             </div>
             <div class="row formcontent">
                 <div class="row mb10 formdsloai">
                     <table>
                         <tr>
-                            <th>MÃ TÀI KHOẢN</th>
-                            <th>TÊN TÀI KHOẢN</th>
-                            <th>MẬT KHẨU</th>
-                            <th>EMAIL</th>
-                            <th>ĐỊA CHỈ</th>
-                            <th>SỐ ĐIỆN THOẠI</th>
-                            <th>VAI TRÒ</th>
-                            <th>THAO TÁC</th>
+                            <th>Mã tài khoản</th>
+                            <th>Tên tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Email</th>
+                            <th>Đia chỉ</th>
+                            <th>Số điện thoại</th>
+                            <th>Vai trò</th>
+                            <th>Thao tác</th>
                         </tr>
                         
                         <?php 
@@ -38,11 +38,4 @@
                         ?>
                     </table>
                 </div>
-                
-                <!-- <div class="row mb10">
-                    <input type="button" value="CHỌN TẤT CẢ">
-                    <input type="button" value="BỎ CHỌN TẤT CẢ">
-                    <input type="button" value="XÓA CÁC MỤC ĐÃ CHỌN">
-                    <a href="index.php?act=adddm"><input type="button" value="NHẬP THÊM"></a>
-                </div> -->
             </div>

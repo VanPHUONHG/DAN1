@@ -10,7 +10,7 @@
     <div class="row mb10 formdsloai">
         <table>
             <tr>
-                <th></th>
+               
                 <th>MÃ ĐƠN HÀNG</th>
                 <th>KHÁCH HÀNG</th>
                 <th>SỐ LƯỢNG HÀNG</th>
@@ -27,7 +27,7 @@
                 $count = loadall_cart_count($bill["id"]);
 
                 echo '<tr>
-                        <td></td>
+                       
                         <td>DAM-' . $bill['id'] . '</td>
                         <td>' . $kh . '</td>
                         <td>' . $count . '</td>

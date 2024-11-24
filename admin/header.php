@@ -14,11 +14,11 @@
         <div class="row mb15 menu">
             <ul>
                 <li><a href="index.php"> Trang Chủ </a></li>
-                <li><a href="index.php?act=adddm"> Danh mục  </a></li>
-                <li><a href="index.php?act=addsp"> Hàng hóa </a></li>
-                <li><a href="index.php?act=dskh"> Khách hàng </a></li>
-                <li><a href="index.php?act=dsbl"> Bình luận </a></li>
-                <li><a href="index.php?act=thongke"> Thống kê </a></li>
-                <li><a href="index.php?act=dsbill"> Danh sách sản phẩm  </a></li>
+                <li><a href="index.php?act=adddm"> Danh Mục  </a></li>
+                <li><a href="index.php?act=addsp"> Sản Phẩm  </a></li>
+                <li><a href="index.php?act=dskh"> Khách Hàng </a></li>
+                <li><a href="index.php?act=dsbl"> Bình Luận </a></li>
+                <li><a href="index.php?act=thongke"> Thống Kê </a></li>
+                <li><a href="index.php?act=dsbill"> Danh Sách Sản Phẩm  </a></li>
             </ul>
         </div>
