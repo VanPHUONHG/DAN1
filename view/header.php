@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DỰ ÁN 1</title>
     <link rel="stylesheet" href="view/css/style.css">
-
 </head>
 
 <body>
     <div class="boxcenter ">
         <div class="row mb10 header">
+            <div class="logo">
+                <img src="view/img/logocty.jpg " alt="">
+            </div>
             <h1>TrailForge - Giày Đẹp Mỗi Bước Đi</h1>
         </div>
 
