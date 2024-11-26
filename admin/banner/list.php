@@ -1,15 +1,15 @@
 <div class="row formtitle">
-        <h1>Danh sách Banner</h1>
+        <h1>DANH SÁCH BANNER</h1>
             </div>
             <div class="row formcontent">
                 <div class="row mb10 formdsloai1">
                     <table>
                         <tr>
                             <th>ID</th>
-                            <th>Tên Banner</th>
-                            <th>Hình ảnh</th>
-                            <th>Mô tả</th>
-                            <th>Hành động</th>
+                            <th>TÊN BANNER</th>
+                            <th>HÌNH ẢNH</th>
+                            <th>MÔ TẢ</th>
+                            <th>HÀNH ĐỘNG</th>
                         </tr>
                         <?php foreach ($listbanner as $banner): ?>
                             <tr>

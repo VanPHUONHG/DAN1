@@ -12,7 +12,7 @@
         <label for="hinh_anh">Hình Ảnh:</label>
         <input type="file" id="hinh_anh" name="hinh_anh">
         <img src="../uploads/<?= $banner['hinh_anh'] ?>" width="100" alt="Banner Image">
-        <input type="hidden" name="hinh_anh_old" value="<?= $banner['hinh_anh'] ?>"> 
+        <input type="hidden" name="hinh_anh_old" value="<?= $banner['hinh_anh'] ?>">
         <br>
         <label for="mo_ta">Mô Tả:</label>
         <textarea id="mo_ta" name="mo_ta"><?= $banner['mo_ta'] ?></textarea>

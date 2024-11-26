@@ -461,21 +461,6 @@ footer {
   color: #000;
   text-decoration: underline;
 }
-
-/* ========= admin ======== */
-
-.headerAD {
-  border: 1px #ccc solid;
-  color: #666;
-  border-radius: 5px;
-  background-color: #eee;
-  padding: 0px 20px;
-}
-
-.headerAD h1 {
-  font-size: 2vw;
-}
-
 .formtitle {
   border: 1px black solid;
   color: white;
@@ -611,6 +596,3 @@ footer {
   font-weight: bold;
 }
 
-.pttt input[type="radio"] {
-  margin-right: 10px;
-}
