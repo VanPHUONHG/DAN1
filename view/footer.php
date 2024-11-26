@@ -61,39 +61,27 @@
 </div>
 <!-- JS CHO Slideshow -->
 <script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
+    let currentIndex = 0;
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
+function changeSlide(direction) {
+    const slides = document.querySelector('.slides');
+    const totalSlides = slides.children.length;
 
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
+    currentIndex += direction;
+    if (currentIndex < 0) {
+        currentIndex = totalSlides - 1;
+    } else if (currentIndex >= totalSlides) {
+        currentIndex = 0;
+    }
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-    if (n < 1) {
-      slideIndex = slides.length
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-  // Auto change slides every 2 seconds
-  setInterval(() => plusSlides(1), 2500);
+// Auto-slide
+setInterval(() => {
+    changeSlide(1);
+}, 4000);
+
 </script>
 </body>
 

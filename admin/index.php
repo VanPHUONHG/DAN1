@@ -7,6 +7,7 @@ include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/cart.php";
 include "../model/bill.php";
+include "../model/banner.php";
 include "header.php";
 include "../model/phanquyen.php";
 include "../global.php";
@@ -81,7 +82,6 @@ if (isset($_GET['act'])) {
 
                 insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
                 $thongbao = "THÊM THÀNH CÔNG";
-                // header('Location: index.php?act=listdm');
             }
             $listdanhmuc = loadall_danhmuc();
             // var_dump($listdanhmuc);die();
@@ -149,6 +149,38 @@ if (isset($_GET['act'])) {
                 $listtaikhoan = loadAll_taikhoan('',0);
                 include "taikhoan/list.php";
             break;
+
+        case 'suatk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $tk = loadOne_taikhoan($_GET['id']);
+            }
+            include "taikhoan/update.php";
+            break;
+
+        case 'xoatk':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $id = $_GET['id'];
+                delete_taikhoan($id);
+            } 
+            $listtaikhoan = loadAll_taikhoan(0);
+            include "taikhoan/list.php";
+            break;    
+            
+        case 'updatekh':
+            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                $id = $_POST['id'];
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $email = $_POST['email'];
+                $address = $_POST['address'];
+                $tel = $_POST['tel'];
+                update_taikhoan($id, $user, $pass, $email, $address, $tel);
+                $thongbao = "Cập nhật tài khoản thành công!";
+            }
+            $listtaikhoan = loadAll_taikhoan();
+            include "taikhoan/list.php";
+            break;
+            
             
             // Danh sách bình luận
         case 'dsbl':
@@ -191,7 +223,7 @@ if (isset($_GET['act'])) {
             }
             $listbill = loadall_bill("", 0);
             include "bill/list.php";
-            break;  
+            break;            
 
             // Thống kê
         case 'thongke':
@@ -204,6 +236,89 @@ if (isset($_GET['act'])) {
             $listthongke= loadall_thongke();
             include "thongke/bieudo.php";
             break;
+
+        case 'listbanner':
+            $listbanner = loadAll_banner();
+            include "banner/list.php";
+            break;
+            
+        case 'addbanner':
+            if (isset($_POST['themmoi']) && $_POST['themmoi']) {
+                $ten_banner = $_POST['ten_banner']; // Lấy giá trị từ form
+                $mo_ta = $_POST['mo_ta']; // Lấy giá trị mô tả từ form
+                $target_dir = "../uploads/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                    
+                // Kiểm tra upload file
+                if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                    try {
+                        insert_banner($ten_banner, $target_file, $mo_ta);  // Thêm banner vào CSDL
+                        $thongbao = "Thêm mới thành công!";
+                            
+                        // Sau khi thêm thành công, chuyển hướng về trang danh sách banner
+                        header("Location: index.php?act=listbanner");
+                        exit; // Dừng script lại sau khi chuyển hướng
+                            
+                    } catch (Exception $e) {
+                        $thongbao = "Lỗi khi thực thi: " . $e->getMessage();
+                    }
+                    } else {
+                        $thongbao = "Có lỗi khi upload hình ảnh!";
+                    }
+                }                
+            include "banner/add.php";
+            break;
+            
+            
+        case 'deletebanner':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                delete_banner($_GET['id']);
+            }
+            $listbanner = loadAll_banner();
+            include "banner/list.php";
+            break;
+            
+        case 'editbanner':
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                $banner = loadOne_banner($_GET['id']);
+                include "banner/edit.php";
+            }
+            break;
+            
+        case 'updatebanner':
+            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+                $id = $_POST['id'];
+                $ten_banner = $_POST['ten_banner'];
+                $mo_ta = $_POST['mo_ta'];
+                $hinh_anh = $_FILES['hinh_anh']['name'];
+            
+                // Nếu có chọn hình ảnh mới
+            if ($hinh_anh != "") {
+                $target_dir = "../uploads/";
+                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+                    if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                        // Hình ảnh mới đã được upload thành công
+                    } else {
+                        $thongbao = "Có lỗi khi upload hình ảnh!";
+                    }
+                } else {
+                    // Nếu không thay đổi hình ảnh, giữ nguyên hình ảnh cũ
+                    $hinh_anh = $_POST['hinh_anh_old'];
+                }
+            
+                // Cập nhật banner
+                    try {
+                        update_banner($id, $ten_banner, $hinh_anh, $mo_ta);
+                        $thongbao = "Cập nhật banner thành công!";
+                    } catch (PDOException $e) {
+                        $thongbao = "Lỗi khi cập nhật banner: " . $e->getMessage();
+                    }
+                }
+            $listbanner = loadAll_banner();
+            include "banner/list.php";
+            break;
+            
+            
 
         default:
             include "dangnhap.php";
