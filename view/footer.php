@@ -80,7 +80,7 @@ function changeSlide(direction) {
 // Auto-slide
 setInterval(() => {
     changeSlide(1);
-}, 4000);
+}, 3500);
 
 </script>
 </body>

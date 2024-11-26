@@ -285,38 +285,41 @@ if (isset($_GET['act'])) {
             }
             break;
             
-        case 'updatebanner':
-            if (isset($_POST['capnhat']) && $_POST['capnhat']) {
-                $id = $_POST['id'];
-                $ten_banner = $_POST['ten_banner'];
-                $mo_ta = $_POST['mo_ta'];
-                $hinh_anh = $_FILES['hinh_anh']['name'];
+            case 'updatebanner':
+                if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+                    $id = $_POST['id'];
+                    $ten_banner = $_POST['ten_banner'];
+                    $mo_ta = $_POST['mo_ta'];
+                    $hinh_anh = "";
             
-                // Nếu có chọn hình ảnh mới
-            if ($hinh_anh != "") {
-                $target_dir = "../uploads/";
-                $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
-                    if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
-                        // Hình ảnh mới đã được upload thành công
+                    // Kiểm tra nếu có upload hình ảnh mới
+                    if (!empty($_FILES['hinh_anh']['name'])) {
+                        $target_dir = "../uploads/";
+                        $target_file = $target_dir . basename($_FILES["hinh_anh"]["name"]);
+            
+                        if (move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $target_file)) {
+                            $hinh_anh = $target_file;
+                        } else {
+                            echo "Lỗi khi tải lên hình ảnh.";
+                            $hinh_anh = $_POST['hinh_anh_old'];
+                        }
                     } else {
-                        $thongbao = "Có lỗi khi upload hình ảnh!";
+                        // Sử dụng hình ảnh cũ nếu không upload hình ảnh mới
+                        $hinh_anh = $_POST['hinh_anh_old'];
                     }
-                } else {
-                    // Nếu không thay đổi hình ảnh, giữ nguyên hình ảnh cũ
-                    $hinh_anh = $_POST['hinh_anh_old'];
-                }
             
-                // Cập nhật banner
+                    // Cập nhật banner
                     try {
                         update_banner($id, $ten_banner, $hinh_anh, $mo_ta);
-                        $thongbao = "Cập nhật banner thành công!";
-                    } catch (PDOException $e) {
-                        $thongbao = "Lỗi khi cập nhật banner: " . $e->getMessage();
+                        $thongbao = "Cập nhật thành công!";
+                        header("Location: index.php?act=listbanner");
+                        exit;
+                    } catch (Exception $e) {
+                        echo "Lỗi khi cập nhật banner: " . $e->getMessage();
                     }
                 }
-            $listbanner = loadAll_banner();
-            include "banner/list.php";
-            break;
+                break;
+            
             
             
 
