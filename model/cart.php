@@ -74,13 +74,4 @@
         $bill = pdo_query($sql);
         return sizeof($bill);
     }
-
-    function loadall_thongke() {
-        $sql ="SELECT danhmuc.id as madm, danhmuc.name as tendm, COUNT(sanpham.id) as countsp, MIN(sanpham.price) as minprice, MAX(sanpham.price) as maxprice, AVG(sanpham.price) as avgprice";
-        $sql.=" FROM sanpham left join danhmuc on danhmuc.id=sanpham.iddm";
-        $sql.=" GROUP BY danhmuc.id ORDER BY danhmuc.id DESC";
-        $listtk = pdo_query($sql);
-        return $listtk;
-    }
-
 ?>
