@@ -8,6 +8,7 @@ include "../model/binhluan.php";
 include "../model/cart.php";
 include "../model/bill.php";
 include "../model/banner.php";
+include "../model/thongke.php";
 include "header.php";
 include "../model/phanquyen.php";
 include "../global.php";
