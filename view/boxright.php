@@ -53,8 +53,6 @@
     </div>
 </div>
 
-<!-- phải đăng nhập mới hiển thị phần giao diện -->
-<?php if (isset($_SESSION['user']) && is_array($_SESSION['user'])): ?> 
     <div class="row mb">
         <div class="boxtitle">Danh Mục</div>
         <div class="boxcontent2 menudoc">
@@ -93,4 +91,3 @@
             ?>
         </div>
     </div>
-<?php endif; ?>
