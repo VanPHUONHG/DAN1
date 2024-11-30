@@ -1,6 +1,7 @@
-<div class="row formtitle mb">
+<div class="row formtitle mb10">
         <h1>DANH SÁCH ĐƠN HÀNG</h1>
     </div>
+
     <form action="index.php?act=listbill" method="post">
         <input type="text" name="kyw" placeholder="Tìm kiếm...">
         <input type="submit" name="" value="Tìm kiếm">
@@ -10,7 +11,6 @@
     <div class="row mb10 formdsloai">
         <table>
             <tr>
-               
                 <th>MÃ ĐƠN HÀNG</th>
                 <th>KHÁCH HÀNG</th>
                 <th>SỐ LƯỢNG HÀNG</th>
