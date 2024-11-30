@@ -47,7 +47,7 @@
                             <td>' . $mota . '</td>                        
                             <td>
                                 <a href="' . $suasp . '"><input type="button" value="sửa"></a>
-                                <a href="' . $xoasp . '"><input type="button" value="xóa"></a>    
+                                <a href="' . $xoasp . '" onclick="return confirm(\'Bạn có chắc chắn muốn xóa?\');"><input type="button" value="xóa"></a>    
                             </td>
                         </tr>';
                 }
@@ -56,9 +56,6 @@
         </div>
         
         <div class="row mb10">
-            <!-- <input type="button" value="Chọn tất cả">
-            <input type="button" value="Bỏ chọn tất cả">
-            <input type="button" value="Xóa các mục đã chọn"> -->
             <a href="index.php?act=addsp "><input type="button" value="Nhập thêm"></a>
         </div>
     </div>

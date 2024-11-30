@@ -20,7 +20,7 @@
                                     <td>'.$name.'</td>
                                     <td>
                                         <a href="'.$suaDanhMuc.'"><input type="button" value="Sửa"></a>
-                                        <a href="'.$xoaDanhMuc.'"><input type="button" value="Xóa"></a>
+                                        <a href="'.$xoaDanhMuc.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa?\');"><input type="button" value="Xóa"></a>
                                     </td>
                                   </tr>';
                         }
@@ -29,9 +29,6 @@
                 </div>
 
                 <div class="row mb10">
-                    <!-- <input type="button" value="CHỌN TẤT CẢ">
-                    <input type="button" value="BỎ CHỌN TẤT CẢ">
-                    <input type="button" value="XÓA CÁC MỤC ĐÃ CHỌN"> -->
                     <a href="index.php?act=adddm"><input type="button" value="Nhập thêm"></a>
                 </div>
             </div>
