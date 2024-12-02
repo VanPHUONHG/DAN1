@@ -26,6 +26,7 @@
         <div class="row mb bill">
             <a href="index.php?act=bill"><input type="submit" value="TIẾP TỤC ĐẶT HÀNG"></a>
             <a href="index.php?act=delcart"><input type="button" value="XÓA GIỎ HÀNG"></a>
+            <a href="index.php"><button>QUAY LẠI TRANG CHỦ</button></a>
         </div>
     </div>
 
