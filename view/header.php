@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="index.php"> Trang Chủ </a></li>
                 <li><a href="index.php?act=gioithieu"> Giới Thiệu </a></li>
-                <li><a href="index.php?act=lienhe"> Liên Hệ </a></li>
+                <li><a href="index.php?act=sanpham"> Sản Phẩm </a></li>
                 <li><a href="index.php?act=gopy"> Góp Ý </a></li>
                 <li><a href="index.php?act=hoidap"> Hỏi Đáp </a></li>
             </ul>

@@ -236,33 +236,5 @@
   border: 1px solid darkslategrey;
 }
 
-.formdsloai1 table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
-.formdsloai1 table th {
-  padding: 20px ;
-  background-color: darkslategrey;
-  color: aliceblue;
-}
-
-.formdsloai1 table td {
-  padding: 10px 20px;
-  border: 1px solid darkslategrey;
-}
-
-.formdsloai1 table td a {
-  width: 100%;
-  color: #000;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  border-radius: 5px;
-  text-decoration: none;
-  text-align: center;
-}
-
-.formdsloai1 table td a:hover {
-  background-color: #ccc;
-}
 

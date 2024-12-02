@@ -5,13 +5,12 @@
                 <div class="row mb10 formdsloai">
                     <table>
                         <tr>
-                            <th></th>
                             <th>ID</th>
                             <th>NỘI DUNG BÌNH LUẬN</th>
                             <th>IDUSER</th>
                             <th>IDPRO</th>
                             <th>NGÀY BÌNH LUẬN</th>
-                            <th></th>
+                            <th>THAO TÁC</th>
                         </tr>
                         <?php 
                         foreach ($listbinhluan as $bl) {
@@ -21,7 +20,6 @@
                             $xoabl = "index.php?act=xoabl&id=".$id;
 
                             echo '<tr>
-                                    <td><input type="checkbox" name="" id=""></td>
                                     <td>'.$id.'</td>
                                     <td>'.$noidung.'</td>
                                     <td>'.$iduser.'</td>

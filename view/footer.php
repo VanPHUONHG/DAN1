@@ -17,7 +17,7 @@
           <li><a href="#">Men's Shoes</a></li>
           <li><a href="#">Women's Shoes</a></li>
           <li><a href="#">Kids' Shoes</a></li>
-          <li><a href="#">Sale</a></li>
+          <li><a href="#">SA'Shoes</a></li>
         </ul>
       </div>
 
@@ -25,15 +25,15 @@
         <h4>Thương Hiệu Hợp Tác</h4>
         <div class="social-icons">
           <ul>
-            <li><a href="#">Jodan</a></li>
-            <li><a href="#">Nike</a></li>
-            <li><a href="#">Balenciaga</a></li>
-            <li><a href="#">Adidas</a></li>
-            <li><a href="#">Puma</a></li>
-            <li><a href="#">Converse</a></li>
-            <li><a href="#">Vans</a></li>
-            <li><a href="#">Gucci</a></li>
-            <li><a href="#">New balance</a></li>
+            <li><a href="index.php?act=sanpham&iddm=33">Jodan</a></li>
+            <li><a href="index.php?act=sanpham&iddm=32">Nike</a></li>
+            <li><a href="index.php?act=sanpham&iddm=31">Balenciaga</a></li>
+            <li><a href="index.php?act=sanpham&iddm=30">Adidas</a></li>
+            <li><a href="index.php?act=sanpham&iddm=29">Puma</a></li>
+            <li><a href="index.php?act=sanpham&iddm=28">Converse</a></li>
+            <li><a href="index.php?act=sanpham&iddm=27">Vans</a></li>
+            <li><a href="index.php?act=sanpham&iddm=26">Gucci</a></li>
+            <li><a href="index.php?act=sanpham&iddm=25">New balance</a></li>
           </ul>
         </div>
       </div>
