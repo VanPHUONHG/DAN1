@@ -572,6 +572,15 @@ footer {
   background-color: #218838;
 }
 
+.nus {
+  background-color: #EFEFEF;
+  color: #000;
+  padding: 3px;
+  border: solid 1px #767676;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
 /* PHƯƠNG THỨC THANH TOÁN */
 
 .pttt {

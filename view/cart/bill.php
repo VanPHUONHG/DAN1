@@ -56,7 +56,7 @@
             </div>
 
             <div class="row mb">
-                <div class="boxtitle">GIỎ HÀNG</div>
+                <div class="boxtitle">ĐƠN HÀNG</div>
                 <div class="row boxcontent cart">
                     <table>
                         <?php
@@ -68,6 +68,7 @@
 
             <div class="row mb bill">
                 <input type="submit" value="ĐỐNG Ý ĐẶT HÀNG" name="dongydathang">
+                <a href="index.php?act=viewcart" class="nus">QUAY LẠI</a>
             </div>
         </form>
     </div>

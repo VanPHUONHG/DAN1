@@ -75,7 +75,7 @@
         </div>
 
         <div class="row mb">
-            <div class="boxtitle">CHI TIẾT GIỎ HÀNG</div>
+            <div class="boxtitle">CHI TIẾT ĐƠN HÀNG</div>
             <div class="row boxcontent cart">
                 <table>
                     
@@ -85,6 +85,10 @@
                     
                 </table>
             </div>
+        </div>
+
+        <div class="row mb">
+            <a href="index.php"><button>Quay lại trang chủ</button></a>
         </div>
     </div>
 
