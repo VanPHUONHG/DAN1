@@ -213,7 +213,15 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
 
         case 'boxsp':
                 include "view/sanpham/sanphamct.php";
-                break;   
+                break;
+                
+        case 'gioithieu':
+                include "view/gioithieu/gioithieu.php";
+                break;
+
+        case 'gioithieu':
+            include "view/sanpham/sanpham.php";
+            break; 
 
         default:
             include "view/home.php";

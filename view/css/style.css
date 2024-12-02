@@ -8,30 +8,35 @@
   margin: 0 auto;
 }
 
-/* Đặt toàn bộ phần tử header vào giữa trang */
+  /* Header */
 .header {
   display: flex;
-  /* Dùng flexbox */
   align-items: center;
-  /* Căn giữa theo chiều dọc */
   justify-content: center;
-  /* Căn giữa theo chiều ngang */
   height: 15vh;
   gap: 10px;
-  /* Khoảng cách giữa logo và tiêu đề */
   text-align: center;
-  /* Đảm bảo text căn giữa nếu có nhiều dòng */
 }
 
-/* Tạo hình tròn cho logo */
+.header {
+  background-color: darkslategrey;
+  border: none;
+  color: #000;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 20px;
+  font-size: 1.4vw;
+  color: white;
+}
+
 .logo img {
   width: 85px;
-  /* Kích thước logo */
   height: 85px;
   border-radius: 50%;
-  /* Bo tròn */
   object-fit: cover;
-  /* Đảm bảo logo không méo */
 }
 .row {
   float: left;
@@ -56,20 +61,6 @@
   min-height: 100px;
 }
 
-.header {
-  background-color: darkslategrey;
-  border: none;
-  color: #000;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.header h1 {
-  margin: 20px;
-  font-size: 1.4vw;
-  color: white;
-}
-
 .menu {
   background-color: black;
   border: none;
@@ -89,7 +80,8 @@
   width: 74%;
 }
 
-/* Footer Styles */
+/* ======================================================== */
+
 footer {
   font-size: 14px;
   color: #fff;
@@ -183,6 +175,8 @@ footer {
 .social-icons ul li a:hover {
   color: yellow; /* Màu đậm hơn khi hover */
 }
+
+/* ======================================================== */
 
 .boxtitle {
   color: #000;
