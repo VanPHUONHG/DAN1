@@ -20,4 +20,88 @@ ORDER BY
 ";
     return pdo_query($sql);
 }
+
+function loadall_sanpham_hot() {
+    try {
+        $sql = "SELECT 
+                    sp.id AS masp, 
+                    sp.name AS tensp, 
+                    sp.price AS price,
+                    SUM(c.soluong) AS total_sold, 
+                    SUM(c.thanhtien) AS total_revenue
+                FROM 
+                    bill b
+                JOIN 
+                    cart c ON b.id = c.ibbill
+                JOIN 
+                    sanpham sp ON c.idpro = sp.id
+                GROUP BY 
+                    sp.id, sp.name, sp.price
+                ORDER BY 
+                    total_sold DESC
+                LIMIT 10";  // Lấy 10 sản phẩm bán chạy nhất
+                
+        // Giả sử pdo_query trả về dữ liệu
+        $result = pdo_query($sql);
+        
+        if (!$result) {
+            throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu!");
+        }
+        return $result;
+    } catch (Exception $e) {
+        echo "Có lỗi xảy ra: " . $e->getMessage();
+        return null;
+    }
+}
+
+function loadall_khachhang() {
+    $sql = "SELECT 
+                b.bill_name, 
+                b.bill_tel, 
+                b.bill_email, 
+                COUNT(b.id) AS total_orders,  -- Số lần khách hàng đã đặt đơn hàng
+                SUM(c.thanhtien) AS total_spent  -- Tổng số tiền khách hàng đã chi tiêu
+            FROM 
+                bill b
+            JOIN 
+                cart c ON b.id = c.ibbill
+            GROUP BY 
+                b.bill_name, b.bill_tel, b.bill_email
+            ORDER BY 
+                total_spent DESC";  // Sắp xếp theo tổng chi tiêu
+
+    // Giả sử pdo_query trả về dữ liệu
+    $result = pdo_query($sql);
+    
+    if (!$result) {
+        echo "Không có dữ liệu khách hàng!";
+        return [];
+    }
+
+    return $result;
+}
+
+function loadall_doanhthu() {
+    try {
+        $sql = "SELECT 
+                    SUM(b.total) AS total_revenue
+                FROM 
+                    bill b
+                WHERE 
+                    b.bill_status = 3";  // Lọc theo trạng thái Đã giao hàng
+        
+        // Giả sử pdo_query trả về dữ liệu
+        $result = pdo_query($sql);
+        
+        if (!$result) {
+            throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu!");
+        }
+        
+        return isset($result[0]['total_revenue']) ? $result[0]['total_revenue'] : 0;  // Trả về tổng doanh thu
+    } catch (Exception $e) {
+        echo "Có lỗi xảy ra: " . $e->getMessage();
+        return 0;
+    }
+}
+
 ?>

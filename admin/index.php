@@ -229,14 +229,16 @@ if (isset($_GET['act'])) {
             // Thống kê
         case 'thongke':
             $listthongke= loadall_thongke();
+            $listsp_hot = loadall_sanpham_hot();  // Lấy danh sách sản phẩm hot
+            $list_khachhang = loadall_khachhang();
             include "thongke/list.php";
             break;
 
             // Biểu đồ
-        case 'bieudo':
-            $listthongke= loadall_thongke();
-            include "thongke/bieudo.php";
-            break;
+        // case 'bieudo':
+        //     $listthongke= loadall_thongke();
+        //     include "thongke/bieudo.php";
+        //     break;
 
         case 'listbanner':
             $listbanner = loadAll_banner();
