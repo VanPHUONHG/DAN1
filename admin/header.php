@@ -16,16 +16,16 @@
         <div class="row mb10 menu">
             <ul>
                 <li><a href="index.php"> Trang Chủ </a></li>
-                <li><a href="index.php?act=adddm"> Danh mục  </a></li>
-                <li><a href="index.php?act=addsp"> Sản phẩm </a></li>
-                <li><a href="index.php?act=dskh"> Khách hàng </a></li>
-                <li><a href="index.php?act=dsbl"> Bình luận </a></li>
-                <li><a href="index.php?act=thongke"> Thống kê </a></li>
-                <li><a href="index.php?act=dsbill"> Quản lý hóa đơn  </a></li>
-                <li><a href="index.php?act=listbanner"> Quản lý banner </a></li>
+                <li><a href="index.php?act=adddm"> Danh Mục  </a></li>
+                <li><a href="index.php?act=addsp"> Sản Phẩm </a></li>
+                <li><a href="index.php?act=dskh"> Người Dùng </a></li>
+                <li><a href="index.php?act=dsbl"> Bình Luận </a></li>
+                <li><a href="index.php?act=thongke"> Thống Kê </a></li>
+                <li><a href="index.php?act=dsbill"> Đơn Hàng  </a></li>
+                <li><a href="index.php?act=listbanner"> Banner </a></li>
             </ul>
         </div>
 
         <div class="row mb10">
-            <button onclick="window.location.href='../index.php';">Quay lại trang khách hàng</button>
+            <button onclick="window.location.href='../index.php';">Quay lại trang người dùng</button>
         </div>
