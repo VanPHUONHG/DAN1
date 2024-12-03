@@ -7,7 +7,6 @@
             <tr>
                 <th>MÃ TÀI KHOẢN</th>
                 <th>TÊN TÀI KHOẢN</th>
-                <th>MẬT KHẨU</th>
                 <th>EMAIL</th>
                 <th>ĐỊA CHỈ</th>
                 <th>SỐ ĐIỆN THOẠI</th>
@@ -24,7 +23,6 @@
                 echo '<tr>
                         <td>'.$id.'</td>
                         <td>'.$user.'</td>
-                        <td>'.$pass.'</td>
                         <td>'.$email.'</td>
                         <td>'.$address.'</td>
                         <td>'.$tel.'</td>
