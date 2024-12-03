@@ -13,13 +13,16 @@
                 ?>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-        $(document).ready(function(){
-            txt = $("input").val();
-            $("#binhluan").load("view/binhluan/binhluanform.php", {idpro: <?=$id?>});
-        });
-        </script>
+        
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+            <script>
+            $(document).ready(function(){
+                txt = $("input").val();
+                $("#binhluan").load("view/binhluan/binhluanform.php", {idpro: <?=$id?>});
+            });
+            </script>
+
         <div class="row mb" id="binhluan">
            
         </div>

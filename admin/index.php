@@ -322,16 +322,13 @@ if (isset($_GET['act'])) {
                     }
                 }
                 break;
-            
-            
-            
 
         default:
-            include "dangnhap.php";
+            include "home.php";
             break;   
     }
 } else {
-    include "dangnhap.php";
+    include "home.php";
 }
 include "footer.php";
 ?>

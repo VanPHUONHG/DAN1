@@ -219,7 +219,7 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                 include "view/gioithieu/gioithieu.php";
                 break;
 
-        case 'gioithieu':
+        case 'sanpham':
             include "view/sanpham/sanpham.php";
             break; 
 

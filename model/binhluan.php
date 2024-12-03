@@ -7,14 +7,14 @@
 
     function loadAll_binhluan($idpro) {
         $sql = "SELECT * FROM binhluan WHERE 1";
-        if ($idpro>0) {
-            $sql.=" AND idpro='".$idpro."' ";
+        if ($idpro > 0) {
+            $sql .= " AND idpro='$idpro'";
         } else {
-            $sql.=" ORDER BY id desc";
+            $sql .= " ORDER BY id desc";
         }
-        $listbl = pdo_query($sql);
-        return $listbl;
+        return pdo_query($sql);
     }
+    
 
     function delete_binhluan($id) {
         $sql = "DELETE FROM binhluan WHERE id = $id";

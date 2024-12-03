@@ -45,7 +45,7 @@
             </form>
             <ul>
                 <li><a href="index.php?act=quenmk">Quên mật khẩu</a></li>
-                <li><a href="index.php?act=dangky">Đăng ký thành viên</a></li>
+                <li><a href="index.php?act=dangky">Đăng ký</a></li>
             </ul>
         <?php
         }
