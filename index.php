@@ -211,6 +211,33 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                 include "view/cart/mybill.php";
                 break;
 
+                case 'cancelbill':
+                    if (isset($_GET['idbill']) && $_GET['idbill'] > 0) {
+                        $idbill = $_GET['idbill'];
+                
+                        // Gọi hàm cập nhật trạng thái đơn hàng sang "Đã hủy"
+                        update_bill_status($idbill, -1); // 4 = Đã hủy
+                
+                        // Điều hướng về lại lịch sử đơn hàng
+                        header("Location: index.php?act=mybill");
+                    }
+                    break;
+
+                // Xử lý xác nhận đơn hàng
+                case 'confirmorder':
+                    if (isset($_GET['idbill']) && $_GET['idbill'] > 0) {
+                        $idbill = $_GET['idbill'];
+
+                        // Cập nhật trạng thái đơn hàng thành "Thành công" trong bảng hóa đơn
+                        update_bill_status($idbill, 4); // 4 là mã trạng thái "Thành công"
+                        
+                        // Điều hướng về lại trang "Đơn hàng của tôi"
+                        header("Location: index.php?act=mybill");
+                    }
+                    break;
+
+                
+
         case 'boxsp':
                 include "view/sanpham/sanphamct.php";
                 break;

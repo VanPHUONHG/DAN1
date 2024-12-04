@@ -88,7 +88,7 @@ function loadall_doanhthu() {
                 FROM 
                     bill b
                 WHERE 
-                    b.bill_status = 3";  // Lọc theo trạng thái Đã giao hàng
+                    b.bill_status = 4";  // Lọc theo trạng thái Đã giao hàng
         
         // Giả sử pdo_query trả về dữ liệu
         $result = pdo_query($sql);
