@@ -224,7 +224,17 @@ if (isset($_GET['act'])) {
             }
             $listbill = loadall_bill("", 0);
             include "bill/list.php";
-            break;            
+            break;
+            
+            case 'deleteBill':
+                if (isset($_GET['bill_id']) && ($_GET['bill_id'] > 0)) {
+                    $id = $_GET['bill_id'];
+                    delete_bill($id);
+                }
+                $listbill = loadall_bill();
+                include "bill/list.php";
+                break;
+                      
 
             // Thống kê
         case 'thongke':

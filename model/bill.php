@@ -65,6 +65,10 @@ function get_ttdh($n) {
             return "Đang giao";
         case '3':
             return "Đã giao";
+        case '-1':
+            return "Đã hủy"; // Thêm trạng thái này
+        case '4':
+            return "Thành công"; // Thêm trạng thái này
         default:
             return "Trạng thái không xác định";
     }
@@ -84,5 +88,11 @@ function get_payment_method($payment_code) {
             return "Chưa xác định"; 
     }
 }
+
+function delete_bill($id) {
+    $sql = "DELETE FROM bill WHERE id = ?";
+    pdo_execute($sql, $id);
+}
+
 
 ?>

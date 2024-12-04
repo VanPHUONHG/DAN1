@@ -11,6 +11,8 @@
                         <th>TỔNG GIÁ TRỊ ĐƠN HÀNG</th>
                         <th>PHƯƠNG THỨC THANH TOÁN</th>
                         <th>TRẠNG THÁI ĐƠN HÀNG</th>
+                        <th>HÀNH ĐỘNG</th>
+                        <th></th>
                     </tr>
                     
                     <?php if (!empty($listbill)) { ?>
@@ -30,6 +32,23 @@
                         <?php 
                             // Hiển thị trạng thái đơn hàng theo phương thức thanh toán và trạng thái đơn hàng
                             echo htmlspecialchars(get_ttdh($bill['bill_status'])); 
+                        ?>
+                    </td>
+
+                    <td>
+                    <a href="index.php?act=cancelbill&idbill=<?php echo $bill['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?')">
+                            <button>Hủy đơn hàng</button>
+                        </a>
+                    </td>
+
+                    <td>
+                        <?php
+                            $status = get_ttdh($bill['bill_status']);
+                            if ($status == 'Đã giao') {
+                                echo '<a href="index.php?act=confirmorder&idbill=' . $bill['id'] . '">
+                                        <button>Xác nhận đã nhận hàng</button>
+                                      </a>';
+                            }
                         ?>
                     </td>
   
