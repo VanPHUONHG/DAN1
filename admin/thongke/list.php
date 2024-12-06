@@ -35,7 +35,7 @@
 </div>
 
 <div class="row formtitle">
-    <h1>SẢN PHẨM HOT</h1>
+    <h1>THỐNG KÊ SẢN PHẨM HOT</h1>
 </div>
 
 <div class="row formcontent"> 
@@ -68,7 +68,7 @@
 </div>
 
 <div class="row formtitle">
-    <h1>THỐNG KÊ KHÁCH HÀNG</h1>
+    <h1>THỐNG KÊ KHÁCH HÀNG CHI TIÊU NHIỀU NHẤT</h1>
 </div>
 
 <div class="row formcontent">
