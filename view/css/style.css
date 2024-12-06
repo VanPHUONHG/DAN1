@@ -126,10 +126,10 @@ footer {
 }
 
 .footer-column ul li a {
-  font-size: 1.2rem; /* Tăng kích thước chữ */
-  color: white; /* Màu xanh lá cây */
-  text-decoration: none; /* Xóa gạch chân */
-  transition: color 0.3s; /* Hiệu ứng mượt khi đổi màu */
+  font-size: 1.2rem;
+  color: white; 
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .footer-column ul li a:hover {
@@ -138,7 +138,7 @@ footer {
 
 .footer-bottom {
   border-top: 1px solid darkslategrey;
-  text-align: center; /* Canh giữa nội dung */
+  text-align: center;
   margin-top: 20px;
   padding: 10px 0;
   font-size: 14px;
@@ -150,11 +150,11 @@ footer {
 }
 
 .social-icons ul {
-  display: grid; /* Sử dụng grid để chia cột */
-  grid-template-columns: repeat(2, 1fr); /* Chia thành 2 cột */
-  gap: 10px; /* Khoảng cách giữa các mục */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   padding: 0;
-  list-style: none; /* Loại bỏ dấu chấm của danh sách */
+  list-style: none; 
   margin: 0;
 }
 
@@ -163,16 +163,16 @@ footer {
 }
 
 .social-icons ul li a {
-  text-decoration: none; /* Xóa gạch chân */
-  color: white; /* Màu xanh lá cây cho liên kết */
+  text-decoration: none; 
+  color: white; 
   font-size: 1.3rem;
   transition: color 0.3s;
   display: inline-block;
-  text-align: left; /* Căn trái trong từng cột */
+  text-align: left; 
 }
 
 .social-icons ul li a:hover {
-  color: yellow; /* Màu đậm hơn khi hover */
+  color: yellow;
 }
 
 /* ======================================================== */
@@ -262,34 +262,33 @@ footer {
 .boxsp {
   float: left;
   width: 32%;
-  min-height: 350px; /* Tăng chiều cao tối thiểu để đảm bảo đủ không gian */
+  min-height: 350px; 
   border: 1px solid #eee;
   border-radius: 5px;
   margin-bottom: 20px;
   margin: 3px;
-  box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
+  box-sizing: border-box; 
   padding: 10px;
-  text-align: center; /* Căn giữa nội dung */
-  background-color: #f9f9f9; /* Thêm màu nền nhạt */
+  text-align: center;
+  background-color: #f9f9f9; 
 }
 
 .boxsp img {
-  width: 150px; /* Chiều rộng hình ảnh */
-  height: 150px; /* Chiều cao hình ảnh */
-  margin: 20px auto; /* Căn giữa hình ảnh với khoảng cách trên và dưới là 20px */
-  display: block; /* Đảm bảo hình ảnh là một khối và căn giữa trong div */
-  border-radius: 5px; /* Bo tròn góc ảnh */
+  width: 150px; 
+  height: 150px; 
+  display: block; 
+  border-radius: 5px;
 }
 
 .boxsp p {
-  font-size: 18px; /* Kích thước phông chữ hợp lý */
+  font-size: 18px;
   color: #333;
   margin: 10px 0;
-  padding: 0 10px; /* Khoảng cách nội dung bên trong */
+  padding: 0 10px;
 }
 
 .boxsp a {
-  font-size: 16px; /* Kích thước phông chữ hợp lý */
+  font-size: 16px;
   color: #4b0082;
   text-decoration: none;
   display: block;
@@ -344,6 +343,7 @@ footer {
 }
 
 .formtk input[type="text"],
+.formtk input[type="number"],
 .formtk input[type="email"],
 .formtk input[type="password"],
 .formcontent input[type="text"] {
