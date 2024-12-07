@@ -214,13 +214,12 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                 include "view/taikhoan/quenmk.php";
                 break;
             
-            
-
             // Đăng xuất
         case 'logout':
             session_unset();
-            header('Location: index.php');
+            header('Location: index.php?act=dangnhap1');
             break;
+            
         
         case 'viewcart':
             include "view/cart/viewcart.php";

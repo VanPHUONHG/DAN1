@@ -27,7 +27,6 @@
                     <li><a href="index.php?act=dangky">Đăng ký</a></li>
                 </ul>
 
-                <!-- Hiển thị thông báo dưới nút đăng nhập -->
                 <h2 class="thongbao">
                     <?php
                         if (isset($thongbao) && ($thongbao != "")) {

@@ -14,19 +14,12 @@
             </div>
         </div>
         
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-            <script>
-            $(document).ready(function(){
-                txt = $("input").val();
-                $("#binhluan").load("view/binhluan/binhluanform.php", {idpro: <?=$id?>});
-            });
-            </script>
-
+        <!-- Bình luận -->
         <div class="row mb" id="binhluan">
-           
+            <!-- Bình luận sẽ được tải từ file bìnhluanform.php -->
         </div>
 
+        <!-- Các sản phẩm cùng loại -->
         <div class="row mb">
             <div class="boxtitle">SẢN PHẨM CÙNG LOẠI</div>
             <div class="row boxcontent">
@@ -47,3 +40,12 @@
         <?php include "view/boxright.php"; ?>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // Lấy id sản phẩm từ PHP và truyền qua AJAX
+        var idpro = <?= $id ?>; // Lấy ID sản phẩm
+        $("#binhluan").load("view/binhluan/binhluanform.php", { idpro: idpro });
+    });
+</script>
