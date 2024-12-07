@@ -3,11 +3,11 @@
         <div class="row mb">
             <div class="boxtitle">CẬP NHẬT TÀI KHOẢN</div>
             <div class="row boxcontent formtk">
-            <?php
-                if (isset($_SESSION['user'])) {
-                    extract($_SESSION['user']);
-                }
-            ?>
+                <?php
+                    if (isset($_SESSION['user'])) {
+                        extract($_SESSION['user']);
+                    }
+                ?>
                 <form action="index.php?act=edit_taikhoan" method="post">
                     <input type="hidden" name="id" value="<?= isset($id) ? htmlspecialchars($id) : '' ?>">
                     <div class="row mb10">
@@ -32,7 +32,7 @@
 
                     <div class="row mb10">
                         <label for="tel">Số điện thoại</label>
-                        <input type="text" name="tel" value="<?= isset($tel) ? htmlspecialchars($tel) : '' ?>">
+                        <input type="number" name="tel" value="<?= isset($tel) ? htmlspecialchars($tel) : '' ?>">
                     </div>
 
                     <div class="row mb10">
@@ -43,16 +43,16 @@
                     </div>
                 </form>
                 <h2 class="thongbao">
-                <?php
-                    if (isset($thongbao) && $thongbao != "") {
-                        echo htmlspecialchars($thongbao);
-                    }
-                ?>
+                    <?php
+                        if (isset($thongbao) && $thongbao != "") {
+                            echo htmlspecialchars($thongbao);
+                        }
+                    ?>
                 </h2>
             </div>
         </div>
     </div>
     <div class="boxphai">
-        <?php include "view/boxright.php"; ?>
+        <?php include "view/boxright1.php"; ?>
     </div>
 </div>

@@ -10,7 +10,6 @@ include "model/banner.php";
 include "view/header.php";
 include "global.php";
 
-
 if (!isset($_SESSION['mycart'])) $_SESSION['mycart'] = [];
 
 $spnew = loadAll_sanpham_home();
@@ -58,73 +57,169 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
             
-                // Kiểm tra xem tài khoản đã tồn tại chưa
-                $existing_account = check_account_existence($email, $user);
-                if ($existing_account) {
-                    // Nếu tồn tại, báo lỗi
-                    $thongbao = "Email hoặc tên đăng nhập đã tồn tại. Vui lòng sử dụng thông tin khác.";
-                } else {
-                    // Nếu không tồn tại, tiến hành đăng ký
-                    insert_taikhoan($email, $user, $pass);
-                    $thongbao = "Đăng ký thành công. Vui lòng đăng nhập để tiếp tục.";
+                $thongbao = '';
+            
+                if (empty($email) || empty($user) || empty($pass)) {
+                    $thongbao = "Tất cả thông tin phải được điền đầy đủ!";
+                }elseif (strlen($user) < 5) {
+                    $thongbao = "Tên đăng nhập người dùng phải có ít nhất 5 ký tự!";
+                }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $thongbao = "Email không hợp lệ!";
+                }elseif (strlen($pass) < 6) {
+                    $thongbao = "Mật khẩu phải có ít nhất 6 ký tự!";
+                }elseif (!preg_match('/[A-Z]/', $pass)) {
+                    $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ cái viết hoa!";
+                }elseif (!preg_match('/[a-z]/', $pass)) {
+                    $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ cái viết thường!";
+                }elseif (!preg_match('/[0-9]/', $pass)) {
+                    $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ số!";
+                }else {
+                    $existing_account = check_account_existence($email, $user);
+                        if ($existing_account) {
+                            $thongbao = "Email hoặc tên đăng nhập đã tồn tại. Vui lòng sử dụng thông tin khác.";
+                        } else {
+                            insert_taikhoan($email, $user, $pass);
+                            $thongbao = "Đăng ký thành công. Vui lòng đăng nhập để tiếp tục!";
+                        }
+                    }
                 }
-            }
-            include "view/taikhoan/dangky.php";
+                include "view/taikhoan/dangky.php";
+                break;
+        
+        case 'dangnhap1':
+            include "view/taikhoan/dangnhap.php";
             break;
             
-
             // Đăng nhập
-        case 'dangnhap':
-            if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
-                $user= $_POST['user'];
-                $password= $_POST['password'];
-                $check_user= check_user($user, $password);   
-                if (is_array($check_user)) {
-                    $_SESSION['user']= $check_user;
-                    $thongbao= "BẠN ĐÃ ĐĂNG NHẬP THÀNH CÔNG";
-                    header('Location: index.php');
-                } else {
-                    $thongbao= "TÀI KHOẢN KHÔNG TỒN TẠI. VUI LÒNG KIỂM TRA LẠI";
-                }               
-            }
-            include "view/taikhoan/dangky.php";
-            break;
-
-            // Sửa thông tin tài khoản
-        case 'edit_taikhoan':
-            if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                $user= $_POST['user'];
-                $pass= $_POST['pass'];
-                $email= $_POST['email'];
-                $address= $_POST['address'];
-                $tel= $_POST['tel'];
-                $id= $_POST['id'];
-                update_taikhoan($id, $user, $pass, $email, $address, $tel);
-                $_SESSION['user']= check_user($user, $pass);
-                header('Location: index.php?act=edit_taikhoan');        
-            }
-            include "view/taikhoan/edit_taikhoan.php";
-            break;
-
-            // Quên mật khẩu
-        case 'quenmk':
-            if (isset($_POST['gui']) && ($_POST['gui'])) {
-                $email= $_POST['email'];
-                $checkemail= check_email($email);
-                if (is_array($checkemail)) {
-                    $thongbao= "Mật khẩu của bạn là: ".$checkemail['pass'];
-                } else {
-                    $thongbao= "Email này không tồn tại";
+            case 'dangnhap':
+                if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
+                    // Lấy dữ liệu từ form
+                    $user = $_POST['user'];
+                    $password = $_POST['password'];
+            
+                    // Khởi tạo các thông báo lỗi
+                    $thongbao = '';
+            
+                    // Kiểm tra xem người dùng có nhập đầy đủ thông tin không
+                    if (empty($user) || empty($password)) {
+                        $thongbao = "Tên đăng nhập và mật khẩu không được để trống!";
+                    } else {
+                        // Kiểm tra thông tin tài khoản
+                        $check_user = check_user($user, $password);
+            
+                        if (is_array($check_user)) {
+                            // Nếu tài khoản tồn tại, lưu thông tin người dùng vào session
+                            $_SESSION['user'] = $check_user;
+                            header('Location: index.php');
+                            exit;
+                        } else {
+                            $thongbao = "Tài khoản hoặc mật khẩu sai!";
+                        }
+                    }
                 }
-            }
-            include "view/taikhoan/quenmk.php";
-            break;
+                include "view/taikhoan/dangnhap.php";
+                break;
+            
 
+            case 'edit_taikhoan':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    // Lấy dữ liệu từ form
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $email = $_POST['email'];
+                    $address = $_POST['address'];
+                    $tel = $_POST['tel'];
+                    $id = $_POST['id'];
+            
+                    // Khởi tạo biến thông báo
+                    $thongbao = '';
+            
+                    // Kiểm tra tất cả các trường có được điền đầy đủ không
+                    if (empty($user) || empty($pass) || empty($email) || empty($address) || empty($tel)) {
+                        $thongbao = "Không được bỏ trống thông tin!";
+                    } 
+                    // Kiểm tra email có hợp lệ không
+                    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $thongbao = "Email không hợp lệ!";
+                    } 
+                    // Kiểm tra số điện thoại có đúng định dạng không
+                    elseif (!preg_match('/^[0-9]{10,11}$/', $tel)) {
+                        $thongbao = "Số điện thoại phải gồm 10 hoặc 11 chữ số!";
+                    }
+                    // Kiểm tra mật khẩu có đủ độ mạnh không
+                    elseif (strlen($pass) < 6) {
+                        $thongbao = "Mật khẩu phải có ít nhất 6 ký tự!";
+                    } 
+                    // Kiểm tra mật khẩu có chứa ít nhất 1 chữ cái viết hoa
+                    elseif (!preg_match('/[A-Z]/', $pass)) {
+                        $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ cái viết hoa!";
+                    } 
+                    // Kiểm tra mật khẩu có chứa ít nhất 1 chữ cái viết thường
+                    elseif (!preg_match('/[a-z]/', $pass)) {
+                        $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ cái viết thường!";
+                    } 
+                    // Kiểm tra mật khẩu có chứa ít nhất 1 chữ số
+                    elseif (!preg_match('/[0-9]/', $pass)) {
+                        $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ số!";
+                    } 
+                    // Kiểm tra mật khẩu có chứa ít nhất 1 ký tự đặc biệt
+                    elseif (!preg_match('/[\W_]/', $pass)) {
+                        $thongbao = "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt!";
+                    } 
+                    else {
+                        // Nếu tất cả hợp lệ, cập nhật tài khoản
+                        update_taikhoan($id, $user, $pass, $email, $address, $tel);
+                        $_SESSION['user'] = check_user($user, $pass);  // Lưu lại thông tin người dùng vào session
+                        $thongbao = "Cập nhật tài khoản thành công!";
+                    }
+                }
+            
+                // Trả thông báo về view
+                include "view/taikhoan/edit_taikhoan.php";
+                break;
+                        
+            // Quên mật khẩu
+            case 'quenmk':
+                // Kiểm tra nếu người dùng đã nhấn nút "Gửi"
+                if (isset($_POST['gui']) && ($_POST['gui'])) {
+                    $email = $_POST['email'];
+            
+                    // Khởi tạo thông báo lỗi và biến email
+                    $thongbao = '';
+                    $error_email = '';
+            
+                    // Kiểm tra xem email có được nhập hay không
+                    if (empty($email)) {
+                        $error_email = "Email không được để trống!";
+                    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $error_email = "Email không hợp lệ!";
+                    }
+            
+                    // Nếu không có lỗi về email, kiểm tra trong cơ sở dữ liệu
+                    if (empty($error_email)) {
+                        $checkemail = check_email($email);
+            
+                        if (is_array($checkemail)) {
+                            $thongbao = "Mật khẩu của bạn là: " . $checkemail['pass'];
+                        } else {
+                            $thongbao = "Email này không tồn tại";
+                        }
+                    } else {
+                        // Nếu có lỗi về email
+                        $thongbao = $error_email;
+                    }
+                }
+            
+                // Bao gồm view quên mật khẩu
+                include "view/taikhoan/quenmk.php";
+                break;
+            
             // Đăng xuất
         case 'logout':
             session_unset();
-            header('Location: index.php');
+            header('Location: index.php?act=dangnhap1');
             break;
+            
         
         case 'viewcart':
             include "view/cart/viewcart.php";

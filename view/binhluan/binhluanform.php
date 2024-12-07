@@ -61,14 +61,18 @@
     </div>
     <?php
         if (isset($_POST['guibinhluan']) && $_POST['guibinhluan']) {
-            $noidung = $_POST['noidung'];
-            $idpro = $_POST['idpro'];
-            $iduser = $_SESSION['user']['id'];
-            $ngaybinhluan = date("h:i:sa d/m/Y");
-            insert_binhluan($noidung, $iduser, $idpro, $ngaybinhluan);
-            header("Location: ".$_SERVER['HTTP_REFERER']." ");
-        }   
-        
+    $noidung = $_POST['noidung'];
+    if (empty($noidung)) {
+        echo "Vui lòng nhập đăng nhập hoặc không được để trống nội dung để bình luận!";
+    } else {
+        $idpro = $_POST['idpro'];
+        $iduser = $_SESSION['user']['id'];
+        $ngaybinhluan = date("h:i:sa d/m/Y");
+        insert_binhluan($noidung, $iduser, $idpro, $ngaybinhluan);
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+}
+
     ?>
 </div>
 </body>
