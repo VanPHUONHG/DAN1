@@ -161,11 +161,7 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                     // Kiểm tra mật khẩu có chứa ít nhất 1 chữ số
                     elseif (!preg_match('/[0-9]/', $pass)) {
                         $thongbao = "Mật khẩu phải chứa ít nhất 1 chữ số!";
-                    } 
-                    // Kiểm tra mật khẩu có chứa ít nhất 1 ký tự đặc biệt
-                    elseif (!preg_match('/[\W_]/', $pass)) {
-                        $thongbao = "Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt!";
-                    } 
+                    }
                     else {
                         // Nếu tất cả hợp lệ, cập nhật tài khoản
                         update_taikhoan($id, $user, $pass, $email, $address, $tel);
