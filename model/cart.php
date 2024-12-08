@@ -3,49 +3,50 @@
         global $img_path;
         $tong = 0;
         $i = 0;
-            if ($del==1) {
-                $xoasp_th = '<th>THAO TÁC</th>';
-                $xoasp_td2 = '<td></td>';
+        if ($del == 1) {
+            $xoasp_th = '<th>THAO TÁC</th>';
+            $xoasp_td2 = '<td></td>';
+        } else {
+            $xoasp_th = "";
+            $xoasp_td2 = "";
+        }
+    
+        echo '<tr>
+                <th>HÌNH</th>
+                <th>SẢN PHẨM</th>
+                <th>ĐƠN GIÁ</th>
+                <th>SỐ LƯỢNG</th>
+                <th>THÀNH TIỀN</th>
+                '.$xoasp_th.'
+            </tr>';
+    
+        foreach ($_SESSION['mycart'] as $cart) {
+            $hinh = $img_path . $cart[2]; // Giả sử $cart[2] là hình ảnh
+            $ttien = $cart[3] * $cart[4]; // Đơn giá * số lượng
+            $tong += $ttien;
+            if ($del == 1) {
+                $xoasp_td = '<td><a href="index.php?act=delcart&idcart=' . $i . '"><input type="button" value="Xóa"></a></td>';
             } else {
-                $xoasp_th = "";
-                $xoasp_td2 = "";
+                $xoasp_td = "";
             }
-
-            echo '<tr>
-                        <th>HÌNH</th>
-                        <th>SẢN PHẨM</th>
-                        <th>ĐƠN GIÁ</th>
-                        <th>SỐ LƯỢNG</th>
-                        <th>THÀNH TIỀN</th>
-                        '.$xoasp_th.'
-                        </tr>';
-
-            foreach ($_SESSION['mycart'] as $cart) {
-                $hinh = $img_path . $cart[2];
-                $ttien = $cart[3] * $cart[4];
-                $tong += $ttien;
-                if ($del==1) {
-                    $xoasp_td = '<td><a href="index.php?act=delcart&idcart=' . $i . '"><input type="button" value="Xóa"></a></td>';
-                } else {
-                    $xoasp_td = "";
-                }
-                echo '
-                    <tr>
-                    <td><img src="' . $hinh . '" alt="" height="80px"></td>
-                    <td>' . $cart[1] . '</td>
-                    <td>' . $cart[3] . '</td>
-                    <td>' . $cart[4] . '</td>
-                    <td>' . $ttien . '</td>
-                    ' . $xoasp_td . '
-                    </tr>';
-                    $i += 1;
-                    }
-                echo '<tr>
-                        <td colspan="4">Tổng đơn hàng</td>
-                        <td>' . $tong . '$</td>
-                        '.$xoasp_td2.'
-                    </tr>';
+            echo '
+                <tr>
+                <td><img src="' . $hinh . '" alt="" height="80px"></td>
+                <td>' . $cart[1] . '</td> <!-- $cart[1] là tên sản phẩm -->
+                <td>' . $cart[3] . '</td> <!-- $cart[3] là đơn giá -->
+                <td>' . $cart[4] . '</td> <!-- $cart[4] là số lượng -->
+                <td>' . $ttien . '</td> <!-- Thành tiền -->
+                ' . $xoasp_td . '
+                </tr>';
+            $i++;
+        }
+        echo '<tr>
+                <td colspan="4">Tổng đơn hàng</td>
+                <td>' . $tong . '$</td>
+                '.$xoasp_td2.'
+            </tr>';
     }
+    
 
     function tongdonhang() {
         $tong = 0;

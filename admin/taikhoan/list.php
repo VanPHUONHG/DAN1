@@ -10,7 +10,6 @@
                 <th>EMAIL</th>
                 <th>ĐỊA CHỈ</th>
                 <th>SỐ ĐIỆN THOẠI</th>
-                <th>VAI TRÒ</th>
                 <th>THAO TÁC</th>
             </tr>
             
@@ -26,7 +25,6 @@
                         <td>'.$email.'</td>
                         <td>'.$address.'</td>
                         <td>'.$tel.'</td>
-                        <td>'.$role.'</td>
                         <td>
                             <a href="'.$suatk.'"><input type="button" value="Sửa"></a>
                             <a href="'.$xoatk.'" onclick="return confirm(\'Bạn có chắc chắn muốn xóa?\');"><input type="button" value="Xóa"></a>

@@ -53,6 +53,6 @@
         </div>
     </div>
     <div class="boxphai">
-        <?php include "view/boxright1.php"; ?>
+        <?php include "view/boxright.php"; ?>
     </div>
 </div>

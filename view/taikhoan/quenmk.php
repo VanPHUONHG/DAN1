@@ -25,6 +25,14 @@
     </div>
 
     <div class="boxphai">
-        <?php include "view/boxright1.php"; ?>
+        <?php
+            if (isset($_SESSION['user'])) {
+                // Nếu người dùng đã đăng nhập, hiển thị boxright.php
+                include "view/boxright.php";
+            } else {
+                // Nếu người dùng chưa đăng nhập, hiển thị boxright1.php
+                include "view/boxright1.php";
+            }
+        ?>
     </div>
 </div>
