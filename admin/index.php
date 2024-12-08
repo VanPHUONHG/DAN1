@@ -244,11 +244,6 @@ if (isset($_GET['act'])) {
             include "thongke/list.php";
             break;
 
-        case 'bieudo':
-            $listthongke= loadall_thongke();
-            include "thongke/bieudo.php";
-            break;
-
         case 'listbanner':
             $listbanner = loadAll_banner();
             include "banner/list.php";
