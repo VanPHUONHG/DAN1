@@ -12,7 +12,7 @@
     <div class="boxcenter ">
         <div class="row mb10 header">
             <div class="logo">
-                <img src="view/img/logocty.jpg " alt="">
+            <a href="index.php"><img src="view/img/logocty.jpg " alt=""></a>
             </div>
             <h1>TrailForge - Giày Đẹp Mỗi Bước Đi</h1>
         </div>
