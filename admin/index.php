@@ -65,30 +65,68 @@ if (isset($_GET['act'])) {
             break;
 
             // SẢN PHẨM
-        case 'addsp':
-            // kiểm tra xem người dùng có clich vào nút add ko
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                $iddm = $_POST['iddm'];
-                $tensp = $_POST['tensp'];
-                $giasp = $_POST['giasp'];
-                $mota = $_POST['mota'];
-                $hinh = $_FILES['hinh']['name'];
-                $target_dir = "../uploads/";
-                $target_file = $target_dir . basename($_FILES["hinh"]["name"]);
-                if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
-                    // echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                } else {
-                    // echo "Sorry, there was an error uploading your file.";
+            case 'addsp':
+                // kiểm tra xem người dùng có click vào nút add không
+                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                    $iddm = $_POST['iddm'];
+                    $tensp = $_POST['tensp'];
+                    $giasp = $_POST['giasp'];
+                    $mota = $_POST['mota'];
+                    $hinh = $_FILES['hinh']['name'];
+                    $errors = [];
+            
+                    // Validate dữ liệu
+                    if (empty($iddm)) {
+                        $errors['iddm'] = "Danh mục không được để trống!";
+                    }
+                    if (empty($tensp)) {
+                        $errors['tensp'] = "Tên sản phẩm không được để trống!";
+                    }
+                    if (empty($giasp)) {
+                        $errors['giasp'] = "Giá sản phẩm không được để trống!";
+                    }
+                    if (empty($mota)) {
+                        $errors['mota'] = "Mô tả không được để trống!";
+                    }
+            
+                    // Kiểm tra hình ảnh
+                    if (empty($hinh)) {
+                        $errors['hinh'] = "Hình ảnh không được để trống!";
+                    } else {
+                        // Kiểm tra định dạng file ảnh
+                        $target_dir = "../uploads/";
+                        $target_file = $target_dir . basename($hinh);
+                        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                        $allowed_types = ['jpg', 'jpeg', 'png', 'gif']; // Các định dạng ảnh cho phép
+                        if (!in_array($imageFileType, $allowed_types)) {
+                            $errors['hinh'] = "Chỉ chấp nhận file ảnh (jpg, jpeg, png, gif).";
+                        }
+            
+                        // Kiểm tra kích thước tệp
+                        if ($_FILES["hinh"]["size"] > 500000) { // Giới hạn 500KB
+                            $errors['hinh'] = "Ảnh phải có kích thước nhỏ hơn 500KB.";
+                        }
+                    }
+            
+                    // Nếu không có lỗi, tiến hành lưu sản phẩm
+                    if (empty($errors)) {
+                        $target_file = $target_dir . basename($hinh);
+                        if (move_uploaded_file($_FILES["hinh"]["tmp_name"], $target_file)) {
+                            // Thực hiện thêm sản phẩm vào cơ sở dữ liệu
+                            insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
+                            $thongbao = "THÊM THÀNH CÔNG";
+                        } else {
+                            $thongbao = "Có lỗi trong quá trình tải ảnh lên.";
+                        }
+                    } else {
+                        $thongbao = "";
+                    }
                 }
-
-                insert_sanpham($tensp, $giasp, $hinh, $mota, $iddm);
-                $thongbao = "THÊM THÀNH CÔNG";
-            }
-            $listdanhmuc = loadall_danhmuc();
-            // var_dump($listdanhmuc);die();
-            include 'sanpham/add.php';
-            break;
-
+            
+                $listdanhmuc = loadall_danhmuc();
+                include 'sanpham/add.php';
+                break;
+            
             // Danh sách sản phẩm
         case 'listsp':
             if (isset($_POST['listok']) && ($_POST['listok'])) {

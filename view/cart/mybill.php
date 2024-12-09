@@ -18,7 +18,7 @@
                     <?php if (!empty($listbill)) { ?>
             <?php foreach ($listbill as $bill) { ?>
                 <tr>
-                    <td>DAM-<?php echo htmlspecialchars($bill['id']); ?></td>
+                    <td>DUAN-<?php echo htmlspecialchars($bill['id']); ?></td>
                     <td><?php echo htmlspecialchars($bill['ngaydathang']); ?></td>
                     <td><?php echo loadall_cart_count($bill['id']); ?></td>
                     <td><?php echo htmlspecialchars($bill['total']); ?></td>
@@ -36,9 +36,14 @@
                     </td>
 
                     <td>
-                    <a href="index.php?act=cancelbill&idbill=<?php echo $bill['id']; ?>" onclick="return confirm('Bạn có chắc muốn hủy đơn hàng này?')">
-                            <button>Hủy đơn hàng</button>
-                        </a>
+                    <?php
+                        // Kiểm tra nếu trạng thái là thành công hoặc đã hủy thì không hiển thị nút hủy đơn hàng
+                        if ($bill['bill_status'] != 1 && $bill['bill_status'] != -1 && $bill['bill_status'] != 4) { // trạng thái khác 'Đã hủy' và 'Thành công'
+                            echo '<a href="index.php?act=cancelbill&idbill=' . $bill['id'] . '" onclick="return confirm(\'Bạn có chắc muốn hủy đơn hàng này?\')">
+                                    <button>Hủy đơn hàng</button>
+                                </a>';
+                        }
+                    ?>
                     </td>
 
                     <td>

@@ -236,5 +236,30 @@
   border: 1px solid darkslategrey;
 }
 
+/* Nút xóa đơn hàng */
+.delete-order {
+  padding: 5px 10px;
+  background-color: #ccc; /* Màu đỏ */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1vw;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-order:hover {
+  background-color: #ddd; /* Màu đỏ đậm khi hover */
+  transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+
+
+
 
 

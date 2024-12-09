@@ -8,12 +8,8 @@
             <input type="text" name="user" value="<?= $tk['user'] ?>">
         </div>
         <div class="row mb10">
-            <label for="pass">Mật khẩu</label>
-            <input type="text" name="pass" value="<?= $tk['pass'] ?>">
-        </div>
-        <div class="row mb10">
             <label for="email">Email</label>
-            <input type="email" name="email" value="<?= $tk['email'] ?>">
+            <input type="text" name="email" value="<?= $tk['email'] ?>">
         </div>
         <div class="row mb10">
             <label for="address">Địa chỉ</label>

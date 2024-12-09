@@ -51,8 +51,8 @@ if (is_array($sanpham)) {
 
             <div class="row mb10">
                 Mô tả <br>
-                <textarea name="mota" cols="108" rows="8" <?= $mota ?>></textarea>
-            </div>
+                <textarea name="mota" cols="108" rows="8"><?= $mota ?></textarea>
+                </div>
 
             <div class="row mb10">
                 <input type="hidden" name="id" value="<?= $sanpham['id'] ?>">

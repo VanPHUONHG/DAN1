@@ -54,9 +54,9 @@
             // Nếu trạng thái đơn hàng là "Đã hủy", hiển thị nút "Xóa đơn hàng"
             if ($bill['bill_status'] == -1) {
                 echo '<td>
-                        <a href="' . $xoabill . '" 
+                        <a class="delete-order" href="' . $xoabill . '" 
                         onclick="return confirm(\'Bạn có chắc chắn muốn xóa đơn hàng này?\')">
-                            Xóa đơn hàng
+                            Xóa
                         </a>
                     </td>';
             } else {
