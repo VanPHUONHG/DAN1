@@ -222,21 +222,33 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
             break;
 
             // Thêm sản phẩm
-        case 'addtocart':
-            if (isset($_POST['addtocart']) && $_POST['addtocart']) {
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $img = $_POST['img'];
-                $price = $_POST['price'];
-                $soluong = 1;
-                $ttien = $soluong * $price;
-                $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+            case 'addtocart':
+                if (isset($_POST['addtocart']) && $_POST['addtocart']) {
+                    // Kiểm tra người dùng đã đăng nhập hay chưa
+                    if (!isset($_SESSION['user'])) {
+                        // Nếu chưa đăng nhập, điều hướng đến trang đăng nhập
+                        header("Location: index.php?act=dangnhap1");
+                        exit();
+                    }
+            
+                    // Thêm sản phẩm vào giỏ hàng
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $img = $_POST['img'];
+                    $price = $_POST['price'];
+                    $soluong = 1;
+                    $ttien = $soluong * $price;
+                    $spadd = [$id, $name, $img, $price, $soluong, $ttien];
                     
-                // Thêm sản phẩm vào giỏ hàng
-                $_SESSION['mycart'][] = $spadd;
-            }
-            include "view/cart/viewcart.php";
-            break;
+                    // Lưu sản phẩm vào session giỏ hàng
+                    $_SESSION['mycart'][] = $spadd;
+            
+                    // Điều hướng trở lại trang trước đó
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    exit();
+                }
+                break;
+            
 
             // Xóa sản phẩm khỏi giỏ hàng
         case 'delcart':
