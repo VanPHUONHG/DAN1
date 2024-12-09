@@ -14,7 +14,7 @@
         <div class="row mb">
             <div class="boxtitle">THÔNG TIN ĐƠN HÀNG</div>
             <div class="row boxcontent" style="text-align:center">
-                    <li>-MÃ ĐƠN HÀNG: DAM-<?=$bill['id'];?></li>
+                    <li>-MÃ ĐƠN HÀNG: DUAN-<?=$bill['id'];?></li>
                     <li>-NGÀY ĐẶT HÀNG: <?=$bill['ngaydathang'];?></li>
                     <li>-TỔNG ĐƠN HÀNG: <?=$bill['total'];?></li>
                     <li>

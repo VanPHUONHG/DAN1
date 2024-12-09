@@ -18,7 +18,7 @@
             <th>TÌNH TRẠNG ĐƠN HÀNG</th>
             <th>NGÀY ĐẶT HÀNG</th>
             <th>CẬP NHẬT TRẠNG THÁI</th>
-            <th>HÀNH ĐỘNG</th>
+            <th></th>
         </tr>
 
         <?php
@@ -38,8 +38,9 @@
                     <td>' . $bill['ngaydathang'] . '</td>';
             
             // Hiển thị form cập nhật trạng thái
-            echo '<td>
-                    <form action="index.php?act=updateBillStatus" method="post">
+            echo '<td>';
+            if ($bill["bill_status"] != 4) { // Không hiển thị form nếu trạng thái là "Đã giao" hoặc "Thành công"
+                echo '<form action="index.php?act=updateBillStatus" method="post">
                         <input type="hidden" name="bill_id" value="' . $bill['id'] . '">
                         <select name="new_status">
                             <option value="0"' . ($bill["bill_status"] == 0 ? "selected" : "") . '>Đang xử lý</option>
@@ -48,15 +49,19 @@
                             <option value="3"' . ($bill["bill_status"] == 3 ? "selected" : "") . '>Đã giao</option>
                         </select>
                         <input type="submit" value="Cập nhật">
-                    </form>
-                </td>';
+                    </form>';
+            } else {
+                echo ''; // Hoặc để trống nếu không muốn hiển thị gì
+            }
+            echo '</td>';
+
 
             // Nếu trạng thái đơn hàng là "Đã hủy", hiển thị nút "Xóa đơn hàng"
             if ($bill['bill_status'] == -1) {
                 echo '<td>
-                        <a href="' . $xoabill . '" 
+                        <a class="delete-order" href="' . $xoabill . '" 
                         onclick="return confirm(\'Bạn có chắc chắn muốn xóa đơn hàng này?\')">
-                            Xóa đơn hàng
+                            Xóa
                         </a>
                     </td>';
             } else {

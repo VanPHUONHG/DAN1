@@ -12,16 +12,23 @@
             </div>
 
             <div class="row mb10">
-                <ul>
-                    <li><a href="index.php?act=viewcart">Giỏ hàng của tôi</a></li>
-                    <li><a href="index.php?act=mybill">Lịch sử mua hàng</a></li>
-                    <li><a href="index.php?act=edit_taikhoan">Cập nhật thông tin</a></li>
-                    <?php if ($role == 1) { ?>
-                        <li><a href="admin/index.php">Đăng nhập admin</a></li>
-                    <?php } ?>
-                    <li><a href="index.php?act=logout">Đăng xuất</a></li>
-                </ul>
-            </div>
+            <ul>
+                <li>
+                    <a 
+                        href="index.php?act=viewcart" 
+                        class="<?php echo (isset($_SESSION['mycart']) && count($_SESSION['mycart']) > 0) ? 'active' : ''; ?>">
+                        Giỏ hàng của tôi
+                    </a>
+                </li>
+                <li><a href="index.php?act=mybill">Lịch sử mua hàng</a></li>
+                <li><a href="index.php?act=edit_taikhoan">Cập nhật thông tin</a></li>
+                <?php if ($role == 1) { ?>
+                    <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                <?php } ?>
+                <li><a href="index.php?act=logout">Đăng xuất</a></li>
+            </ul>
+        </div>
+
         </div>
         <?php
         }
