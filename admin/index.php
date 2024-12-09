@@ -18,15 +18,30 @@ if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
             // Danh mục
-        case 'adddm':
-            // Kiểm tra user có click vào nút thêm mới hay không
-            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
-                $tenLoai = $_POST['tenloai'];
-                insert_danhmuc($tenLoai); 
-                $thongBao = "Thêm thành công";
-            }
-            include "danhmuc/add.php";
-            break;
+            case 'adddm':
+                // Kiểm tra user có click vào nút thêm mới hay không
+                if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                    // Lấy giá trị người dùng nhập vào
+                    $tenLoai = $_POST['tenloai'];
+            
+                    // Mảng chứa lỗi
+                    $error = [];
+            
+                    // Kiểm tra "Tên loại"
+                    if (empty($tenLoai)) {
+                        $error['tenloai'] = "Tên loại không được để trống";
+                    }
+            
+                    // Nếu không có lỗi, thực hiện thêm vào database
+                    if (empty($error)) {
+                        insert_danhmuc($tenLoai); 
+                        $thongBao = "Thêm thành công";
+                    }
+                }
+            
+                include "danhmuc/add.php";
+                break;
+            
 
             // Danh sách danh mục
         case 'listdm':
@@ -119,14 +134,14 @@ if (isset($_GET['act'])) {
                             $thongbao = "Có lỗi trong quá trình tải ảnh lên.";
                         }
                     } else {
-                        $thongbao = "";
+                        $thongbao = "Vui nhập đầy đủ thông tin!";
                     }
                 }
             
                 $listdanhmuc = loadall_danhmuc();
                 include 'sanpham/add.php';
                 break;
-            
+                        
             // Danh sách sản phẩm
         case 'listsp':
             if (isset($_POST['listok']) && ($_POST['listok'])) {

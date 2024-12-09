@@ -12,7 +12,12 @@
 
             <div class="row mb10">
                 <label for="tenloai">Tên loại</label>
-                <input type="text" name="tenloai">
+                <input type="text" name="tenloai" value="<?= isset($tenloai) ? $tenloai : ''; ?>">
+                <?php
+                    if (isset($error['tenloai'])) {
+                        echo "<p style='color: red;'>".$error['tenloai']."</p>";
+                    }
+                ?>
             </div>
 
             <div class="row mb10">
@@ -22,9 +27,10 @@
             </div>
 
             <?php
-                if (isset($thongBao) && ($thongBao != "")) echo $thongBao;
+                if (isset($thongBao) && ($thongBao != "")) {
+                    echo "<p style='color: red;'>".$thongBao."</p>";
+                }
             ?>
         </form>
     </div>
-    
 </div>

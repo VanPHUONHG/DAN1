@@ -50,9 +50,10 @@
             </div>
 
             <?php
-                if (isset($thongbao) && ($thongbao!="")) echo $thongbao;
+                if (isset($thongbao) && ($thongbao != "")) {
+                    echo "<p style='color: red;'>".$thongbao."</p>";
+                }
             ?>
         </form>
-
     </div>
 </div>

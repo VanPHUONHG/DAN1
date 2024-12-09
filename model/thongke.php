@@ -55,31 +55,37 @@ function loadall_sanpham_hot() {
 }
 
 function loadall_khachhang() {
-    $sql = "SELECT 
-                b.bill_name, 
-                b.bill_tel, 
-                b.bill_email, 
-                COUNT(b.id) AS total_orders,  -- Số lần khách hàng đã đặt đơn hàng
-                SUM(c.thanhtien) AS total_spent  -- Tổng số tiền khách hàng đã chi tiêu
-            FROM 
-                bill b
-            JOIN 
-                cart c ON b.id = c.ibbill
-            GROUP BY 
-                b.bill_name, b.bill_tel, b.bill_email
-            ORDER BY 
-                total_spent DESC";  // Sắp xếp theo tổng chi tiêu
+    try {
+        // Truy vấn SQL tính toán thông tin khách hàng chỉ với đơn hàng thành công
+        $sql = "SELECT 
+                    b.bill_name, 
+                    b.bill_tel, 
+                    b.bill_email, 
+                    COUNT(b.id) AS total_orders,  -- Số lượng đơn hàng thành công
+                    SUM(b.total) AS total_spent  -- Tổng chi tiêu của khách hàng (chỉ tính đơn hàng đã giao)
+                FROM 
+                    bill b
+                WHERE 
+                    b.bill_status = 4  -- Lọc chỉ những đơn hàng đã giao (thành công)
+                GROUP BY 
+                    b.bill_name, b.bill_tel, b.bill_email
+                ORDER BY 
+                    total_spent DESC";  // Sắp xếp theo tổng chi tiêu
 
-    // Giả sử pdo_query trả về dữ liệu
-    $result = pdo_query($sql);
-    
-    if (!$result) {
-        echo "Không có dữ liệu khách hàng!";
+        // Giả sử pdo_query trả về dữ liệu
+        $result = pdo_query($sql);
+        
+        if (!$result) {
+            throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu!");
+        }
+
+        return $result;  // Trả về danh sách khách hàng đã có đơn hàng thành công
+    } catch (Exception $e) {
+        echo "Có lỗi xảy ra: " . $e->getMessage();
         return [];
     }
-
-    return $result;
 }
+
 
 function loadall_doanhthu() {
     try {

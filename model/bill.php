@@ -36,9 +36,14 @@ function insert_bill($iduser, $name, $email, $address, $tel, $pttt, $ngaydathang
 }
 
 function update_bill_status($bill_id, $new_status) {
+    $bill = loadone_bill($bill_id);
+    if ($bill['bill_status'] == 4) {
+        return;
+    }
     $sql = "UPDATE bill SET bill_status = '$new_status' WHERE id = '$bill_id'";
     pdo_execute($sql);
 }
+
 
 function loadone_bill($id) {
     $sql = "SELECT * FROM bill WHERE id=".$id;
