@@ -92,21 +92,29 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
             
             // Đăng nhập
             case 'dangnhap':
+                // Kiểm tra nếu đã đăng nhập
+                if (isset($_SESSION['user'])) {
+                    // Thông báo yêu cầu đăng xuất trước khi đăng nhập tài khoản khác
+                    $thongbao = "Vui lòng đăng xuất trước khi đăng nhập tài khoản mới!";
+                    include "view/taikhoan/dangnhap.php";
+                    break;
+                }
+            
                 if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
                     // Lấy dữ liệu từ form
                     $user = $_POST['user'];
                     $password = $_POST['password'];
-            
+                
                     // Khởi tạo các thông báo lỗi
                     $thongbao = '';
-            
+                
                     // Kiểm tra xem người dùng có nhập đầy đủ thông tin không
                     if (empty($user) || empty($password)) {
                         $thongbao = "Tên đăng nhập và mật khẩu không được để trống!";
                     } else {
                         // Kiểm tra thông tin tài khoản
                         $check_user = check_user($user, $password);
-            
+                
                         if (is_array($check_user)) {
                             // Nếu tài khoản tồn tại, lưu thông tin người dùng vào session
                             $_SESSION['user'] = $check_user;
@@ -119,6 +127,7 @@ if ((isset($_GET['act']) && ($_GET['act']) != "")) {
                 }
                 include "view/taikhoan/dangnhap.php";
                 break;
+            
             
 
             case 'edit_taikhoan':
